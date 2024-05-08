@@ -1,0 +1,2 @@
+﻿CRUD (create, read, update, delete) işlemlerinin metodlarının yazıldıığı katmandır.
+Bu işlemlerde listeleme, güncelleme, Id numarasına göre getirme gibi işlemler için ayrı ayrı metodlar yazıldı.

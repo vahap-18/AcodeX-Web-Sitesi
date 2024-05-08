@@ -1,0 +1,10 @@
+﻿@* @model IEnumerable<AcodeX_Web_Sitesi.Models.UserComment>
+ *@
+@model IEnumerable<EntityLayer.Concrate.Comment>
+
+    <h2>Yorumların Defaulst sayfası</h2>
+@foreach (var item in Model)
+{
+    <p>@item.UserName</p>
+    <p>@item.Content</p>
+}

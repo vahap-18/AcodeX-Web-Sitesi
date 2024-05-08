@@ -1,0 +1,1 @@
+﻿Entity Layerda entityler tanımlanır ve veri tabanındaki verileri sınıflar ve classlar olarak tanımlandı.

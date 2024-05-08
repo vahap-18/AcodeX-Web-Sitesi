@@ -1,0 +1,14 @@
+﻿Bussines Layer katmanında projedeki geçerlilik kuralları yazılır. Bunlara validation denir.
+Blog sitesi için genel kurallar şunlardır.
+	- Blog adı boş bırakılamaz.
+	- Yazarın adı olmalıdır.
+	- Blogun içeriği boş geçirilemez.
+
+
+Abstract Klasörü:
+- Interfacelerin bulunduğu klasördür.
+- Interfaceler services olarak adlandırlır.
+
+Concrate Klasörü:
+- Manager olarak adlandırılan classlar barındırır.
+

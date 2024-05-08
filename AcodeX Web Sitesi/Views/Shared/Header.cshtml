@@ -1,0 +1,101 @@
+﻿<header id="site-header" class="fixed-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg stroke">
+
+            <h1>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img class="img-fluid" src="~/tema/assets/images/OrijinalLogo.png" alt="Logo">
+                </a>
+            </h1>
+
+            <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+            </button>
+
+
+            <!--Navbar menüsü başlangıç-->
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Education">Eğitimler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Artificial">Yapay Zeka</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Forum">Forum</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-link dropdown-toggle" asp-area="" asp-controller="Home" asp-action="MyAccount">Hesabım</a>
+                        <ul class="dropdown-menu">
+                            <a class="dropdown-item" asp-area="" asp-controller="About" asp-action="Index">Hakkımda</a>
+
+                            <li><a class="dropdown-item" href="#">Bloglarım</a></li>
+                            <li><a class="dropdown-item" href="#">Video Eğitimler</a></li>
+                            <li><a class="dropdown-item" href="#">İletişim</a></li>
+                            <li><a class="dropdown-item" href="#">Çıkış</a></li>
+                            <a class="dropdown-item" asp-area="" asp-controller="About" asp-action="BizKimiz">Biz Kimiz</a>
+                            <li><a class="dropdown-item" href="#">Gizlilik Sözleşmesi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--Navbar menüsü bitiş-->
+                <!-- Login/Register başlangıç -->
+                <div class="nav-btn" style="text-align:center">
+                    <button class="btn btn-outline-secondary" style="padding:2px" type="button"><a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">Giriş/Kayıt</a></button>
+                </div>
+                <!-- Login/Register bitiş -->
+                <!-- Arama butonu başlangıç -->
+                <div class="search-right">
+                    <a href="#search" class="btn btn-outline-primary" title="search">Search</a>
+                    <!-- Arama butonu popup başlangıç -->
+                    <div id="search" class="pop-overlay">
+                        <div class="popup">
+                            <h4 class="search-pop-text-w3 text-white text-center mb-4">
+                                Bilinmeyen bir kod ara
+                            </h4>
+                            <form action="#error" method="GET" class="search-box">
+                                <div class="input-search">
+                                    <span class="fa fa-search mr-2" aria-hidden="true"></span><input type="search" placeholder="Kelime gir" name="search" required="required" autofocus="">
+                                </div>
+                                <button type="submit" class="btn button-style">Ara</button>
+                            </form>
+                        </div>
+                        <a class="close" href="#close">×</a>
+                    </div>
+                    <!-- Arama butonu popup bitiş -->
+
+                </div>
+                <!-- Arama butonu bitiş -->
+            </div>
+
+
+            <!-- Tema değiştirme başlangıç -->
+            <div class="cont-ser-position">
+                <nav class="navigation">
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox">
+                            <div class="mode-container">
+                                <i class="gg-sun"></i>
+                                <i class="gg-moon"></i>
+                            </div>
+                        </label>
+                    </div>
+                </nav>
+            </div>
+            <!-- Tema değiştirme bitiş -->
+
+        </nav>
+    </div>
+</header>
