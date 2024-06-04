@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.EntityFramework
 {
-    public class EFContactRepository : IGenericDal<Contact>, IContactDal
+    public class EFContactRepository : BlogManager<Contact>, IContactDal
     {
         public void Delete(Contact t)
         {

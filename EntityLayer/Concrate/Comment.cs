@@ -11,12 +11,13 @@ namespace EntityLayer.Concrate
     {
         [Key]
         public int CommentId { get; set; }
-        public string UserName { get; set; }
-        public string UserEmail { get; set; }
-        public string? Content { get; set; }
+        public required string UserName { get; set; } 
+        public required string UserEmail { get; set; }
+        public required string Content { get; set; }
         public DateTime CreateDate { get; set; }
-        public bool Status { get; set; }
+        public int BlogScore { get; set; } = 0;
+        public bool Status { get; set; } = true;
         public int BlogId { get; set; }
-        public Blog Blogs { get; set; }
+        public Blog? Blogs { get; set; } 
     }
 }

@@ -10,7 +10,7 @@ namespace AcodeX_Web_Sitesi.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-     
+
         public IActionResult Index()
         {
             return View();
@@ -22,8 +22,8 @@ namespace AcodeX_Web_Sitesi.Controllers
         public async Task<IActionResult> Index(Writer p)
         {
             Context c = new Context();
-            var datavalue = c.Writers.FirstOrDefault(x => x.Email ==  p.Email && x.Password == p.Password);
-            if(datavalue != null)
+            var datavalue = c.Writers.FirstOrDefault(x => x.Email == p.Email && x.Password == p.Password);
+            if (datavalue != null)
             {
                 var claims = new List<Claim>
                 {
@@ -32,12 +32,17 @@ namespace AcodeX_Web_Sitesi.Controllers
                 var userindentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userindentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Home");
-            } 
+                return RedirectToAction("Index", "Writer");
+            }
             else
             {
                 return View(datavalue);
             }
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
     }
 }

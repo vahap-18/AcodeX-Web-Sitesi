@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Abstract
 {
-    public interface IContactDal : IGenericDal<Contact>
+    public interface IContactDal : BlogManager<Contact>
     {
     }
 }

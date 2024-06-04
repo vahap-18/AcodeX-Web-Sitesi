@@ -1,0 +1,143 @@
+﻿@using System.Collections.Generic;
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<EntityLayer.Concrate.Writer>;
+
+@{
+    ViewData["Title"] = "WriterList";
+    Layout = "AdminLayout";
+    int sıraNo = 1;
+}
+
+<style>
+    .icon-copy{
+        color:darkslateblue;
+    }
+</style>
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Yazar Profilleri</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Yazarlar
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                    
+                     <div class="col-md-6 col-sm-12 text-right">
+                    <a asp-controller="AdminWriters" asp-action="WriterAdd" class="btn btn-primary">Yazar Ekle</a>
+                    </div> 
+                   
+
+                </div>
+            </div>
+            <div class="card-box mb-30">
+                <div class="pb-20">
+                    <div class="pd-20">
+                        <h4 class="text-blue h4">Yazar Profilleri</h4>
+                    </div>
+
+                    <table class=" table table-hover table-bordered">
+
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Profil</th>
+                                <th>Ad Soyad</th>
+                                <th>E-mail</th>
+                                <th>Telefon Numarası</th>
+                                <th>Teknolojiler</th>
+                                <th>Programlama Dilleri</th>
+                                <th>Sosyal Medya </th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@sıraNo</td>
+                                    <td><img src="@item.Image" alt="Profile Görseli" style="width: 50px; height: 50px; object-fit: cover;"></td>
+                                    <td>
+                                        @item.Name @item.Surname
+                                    </td>
+                                    <td>@item.Email</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.KnowTeknologies</td>
+                                    <td>@item.ProgrammingLanguages</td>
+                                    <td>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-globe"></i></a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-github"></i></a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-instagram"></i> </a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-facebook"></i> </a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-linkedin"></i></a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-youtube"></i></a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-twitter"></i></a>
+                                        <a href="#" style="margin:5px"> <i class="icon-copy bi bi-discord"></i></a>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                               href="#"
+                                               role="button"
+                                               data-toggle="dropdown">
+                                                <i class="dw dw-more"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <a class="dropdown-item" href="WritersProfilView/@item.WriterId"><i class="icon-copy bi bi-eye-fill"></i>Görüntüle</a>
+                                                <a class="dropdown-item" href="#"><i class="icon-copy bi bi-eye"></i> Aktif</a>
+                                                <a class="dropdown-item" href="#"><i class="icon-copy bi bi-eye-slash"></i>Pasif</a>
+                                                <a class="dropdown-item" href="WriterUpdate/@item.WriterId"><i class="icon-copy dw dw-edit-1"></i>Düzenle</a>
+                                                <a class="dropdown-item" href="WriterDelete/@item.WriterId"><i class="icon-copy bi bi-trash3"></i>Sil</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                sıraNo++;
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="d-flex justify-content-center">
+                        @Html.PagedListPager(
+                                 Model,
+                                 page => Url.Action("WritersTables", new { wp = page }),
+                                 new PagedListRenderOptions
+                        {
+                            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                            DisplayLinkToIndividualPages = true,
+                            DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                            EllipsesFormat = "&#8230;",
+                            LinkToFirstPageFormat = "İlk",
+                            LinkToPreviousPageFormat = "Önceki",
+                            LinkToIndividualPageFormat = "{0}",
+                            LinkToNextPageFormat = "Sonraki",
+                            LinkToLastPageFormat = "Son",
+                            PageClasses = new[] { "page-link" },
+                            UlElementClasses = new[] { "pagination" },
+                            LiElementClasses = new[] { "page-item" },
+                            ActiveLiElementClass = "active"
+                        }
+                                 )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

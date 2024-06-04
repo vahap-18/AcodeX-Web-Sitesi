@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Abstarct
 {
-    public interface ICommentServices
+    public interface ICommentServices: IGenericServices<Comment>
     {
         void CommentAdd(Comment comment);
        // void CommentDelete(Comment comment);

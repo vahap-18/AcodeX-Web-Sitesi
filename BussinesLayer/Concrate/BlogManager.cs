@@ -13,21 +13,6 @@ namespace BussinesLayer.Concrate
             _blogDal = blogDal;
         }
 
-        public void BlogAdd(Blog blog)
-        {
-           _blogDal.Insert(blog);
-        }
-
-        public void BlogDelete(Blog blog)
-        {
-            _blogDal.Delete(blog);
-        }
-
-        public void BlogUpdate(Blog blog)
-        {
-            _blogDal.Update(blog);
-        }
-
         public List<Blog> GetBlogByWriter(int id)
         {
             return _blogDal.GetListAll(x => x.WriterId == id);
@@ -39,24 +24,49 @@ namespace BussinesLayer.Concrate
             return _blogDal.GetListWithCategory();
         }
 
-        public Blog GetById(int id)
+        public List<Blog> GetListWithCategoryByWriterBM(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(1);
+        }
+
+        public Blog TGetById(int id)
         {
             return _blogDal.GetById(id);
         }
+
         public Blog GetBlogById(int id)
         {
             return _blogDal.GetListAll(x => x.BlogId == id).FirstOrDefault();
 
         }
-     
         public List<Blog> GetListAll()
         {
-           return _blogDal.GetListAll();
+            return _blogDal.GetListAll();
         }
 
         public List<Blog> GetLastTreeBlog()
         {
             return _blogDal.GetListAll().Take(3).ToList();
+        }
+
+        public void TAdd(Blog t)
+        {
+            _blogDal.Insert(t);
+        }
+
+        public void TDelete(Blog t)
+        {
+            _blogDal.Delete(t);
+        }
+
+        public void TUpdate(Blog t)
+        {
+            _blogDal.Update(t);
+        }
+
+        public List<Blog> GetList()
+        {
+            return _blogDal.GetListAll();
         }
     }
 }

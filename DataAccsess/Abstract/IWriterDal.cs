@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Abstract
 {
-    public interface IWriterDal : IGenericDal<Writer>
+    public interface IWriterDal : BlogManager<Writer>
     {
     }
 }

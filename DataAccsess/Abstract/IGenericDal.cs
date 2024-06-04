@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Abstract
 {
-    public interface IGenericDal<T> where T : class
+    public interface BlogManager<T> where T : class
     {
         void Insert(T entity);
         void Delete(T entity);

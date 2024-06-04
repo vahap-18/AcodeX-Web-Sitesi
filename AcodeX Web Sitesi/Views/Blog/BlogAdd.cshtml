@@ -1,0 +1,80 @@
+﻿@model EntityLayer.Concrate.Blog;
+
+
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "WriterLayout";
+}
+<div class="main-container">
+    @using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Blog Ekle</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="Blog" asp-action="BlogListByWriter">Bloglarım</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Blog Ekle
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @* Blog Başlığı için etiket oluştur *@
+                @Html.LabelFor(m => m.Title, "Blog Başlığı")
+
+                @* Blog Başlığı için metin kutusu oluştur ve Bootstrap sınıfı ekle *@
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Blog Başlığı" })
+
+                @* Blog Başlığı için doğrulama mesajı alanı *@
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, "Kısa Açıklama")
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Kısa Açıklama" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CategoryId, "Kategori")
+                @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control", placeholder = "Kategori" })
+                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Image, "Blog Görseli")
+                @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "Blog Görseli" })
+                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+            </div>
+
+            @*   <div class="form-group">
+        @Html.LabelFor(m => m.Image, "Blog Görseli")
+        <input type="file" name="Image" class="form-control-file form-control height-auto" />
+        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+        </div> *@
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Content, "Blog İçeriği")
+                @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 10, placeholder = "Blog İçeriği" })
+                @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
+            </div>
+
+            @* Blog Ekle butonu *@
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Blog Ekle</button>
+        </div>
+    }
+</div>

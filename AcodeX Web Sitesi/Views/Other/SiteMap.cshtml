@@ -1,0 +1,155 @@
+﻿@*
+    Site ağacı sayfası
+*@
+@{
+    ViewData["Title"] = "SiteMap";
+    Layout = "_Layout";
+}
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Site Haritası</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="Dashboard" asp-action="Dashboard">Anasayfa</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Site Haritası
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-30">
+                <div class="pb-20">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="sitemap">
+                                <h5 class="h5"> <a asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a> </h5>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5"><a asp-area="" asp-controller="Blog" asp-action="Index">Bloglar</a> </h5></h5>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5"><a asp-area="" asp-controller="Education" asp-action="Index">Eğitimler</a> </h5></h5>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5"><a asp-area="" asp-controller="Artificial" asp-action="Index">Yapay Zeka</a> </h5></h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="sitemap">
+                                <h5 class="h5">Panel</h5>
+                                <ul>
+                                    <li><a asp-area="" asp-controller="Dashboard" asp-action="Dashboard">Gösterge Paneli</a></li>
+                                    <li><a asp-area="" asp-controller="Dashboard" asp-action="AnalysisPanel">Analiz Paneli</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="sitemap">
+                                <h5 class="h5">Benim Hesabım</h5>
+                                <ul>
+                                    <li><a asp-area="" asp-controller="Writer" asp-action="Profil">Profil</a></li>
+                                    <li><a asp-area="" asp-controller="Blog" asp-action="BlogListByWriter">Bloglarım</a></li>
+                                    <li><a asp-area="" asp-controller="Blog" asp-action="BlogAdd">Blog Ekle</a></li>
+                                    <li><a href="#">Eğitimlerim</a></li>
+                                    <li><a href="#">Eğitim Ekle</a></li>
+                                    <li><a asp-area="" asp-controller="Login" asp-action="ForgotPassword">Parolamı Unuttum</a></li>
+                                    <li><a asp-area="" asp-controller="Login" asp-action="ForgotPassword">Parola Sıfırla</a></li>
+                                    <li><a asp-area="" asp-controller="Login" asp-action="Index">Çıkış</a></li>  </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="sitemap">
+                                <h5 class="h5">Site Haritası</h5>
+                                <ul>
+                                    <li>
+                                        <a asp-area="" asp-controller="Other" asp-action="SiteMap" class="dropdown-toggle no-arrow">
+                                           <span class="mtext">Site Haritası</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="sitemap">
+                                <h5 class="h5">Mesajlar</h5>
+                                <ul>
+                                    <li>
+                                        <a href="~/admin/chat.html" class="dropdown-toggle no-arrow">
+                                            <span class="mtext">Mesajlar</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5">Bildirimler</h5>
+                                <ul>
+                                    <li>
+                                        <a href="#" class="dropdown-toggle no-arrow">
+                                            <span class="mtext">Bildirimler</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5">Dökümanlar</h5>
+                                <ul>
+                                    <li><a href="#">Doküman 1</a></li>
+                                    <li><a href="#">Doküman 2</a></li>
+                                    <li><a href="#">Doküman 3</a></li>
+                                </ul>
+                            </div>
+                            <div class="sitemap">
+                                <h5 class="h5">Biz Kimiz</h5>
+                                <ul>
+                                    <li><a href="#">Hakkımızda</a></li>
+                                    <li><a href="#">İletişim</a></li>
+                                    <li><a href="#">Gizlilik Sözleşmesi</a></li>
+                                    <li><a asp-area="" asp-controller="Other" asp-action="FAQ">S.S.S.</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @* <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="sitemap">
+                    <h5 class="h5">Multi Level Sitemap</h5>
+                    <ul>
+                    <li><a href="#">Level 1</a></li>
+                    <li><a href="#">Level 1</a></li>
+                    <li class="child">
+                    <h5 class="h5">Level 2</h5>
+                    <ul>
+                    <li><a href="#">Level 2</a></li>
+                    <li><a href="#">Level 2</a></li>
+                    <li class="child">
+                    <h5 class="h5">Level 3</h5>
+                    <ul>
+                    <li><a href="#">Level 3</a></li>
+                    <li><a href="#">Level 3</a></li>
+                    </ul>
+                    </li>
+                    </ul>
+                    </li>
+                    </ul>
+                    </div>
+                    </div>
+                    </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

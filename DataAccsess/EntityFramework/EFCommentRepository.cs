@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.EntityFramework
 {
-    public class EFCommentRepository : IGenericDal<Comment>, ICommentDal
+    public class EFCommentRepository : BlogManager<Comment>, ICommentDal
     {
         ICommentDal _commentDal;
 

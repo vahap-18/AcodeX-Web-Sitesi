@@ -1,0 +1,49 @@
+﻿@model EntityLayer.Concrate.Category;
+
+
+@{
+    ViewData["Title"] = "CategoryUpdate";
+    Layout = "WriterLayout";
+}
+@using (Html.BeginForm("CategoryUpdate", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-container">
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4> Kategori Güncelle</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="Admin" asp-action="CategoryList">Kategoriler</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Kategori Güncelle
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Name, "Kategori adı")
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Blog Başlığı" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, "Kısa Açıklama")
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Kısa Açıklama" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Güncelle</button>
+            <a class="btn btn-success btn-block" asp-controller="AdminCategory" asp-action="CategoryList">İptal</a>
+        </div>
+    </div>
+}

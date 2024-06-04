@@ -1,56 +1,60 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
-<br /> <br />
-<div class="right-side text-center">
-    <h4>Yazılım alanında ne öğrenmek istiyorsunuz</h4>
-    <a class="btn button-style mt-4" asp-area="" asp-controller="Home" asp-action="Education">
-        Eğitime Başla<i class="fa fa-angle-double-right" aria-hidden="true"></i>
-    </a>
-</div>
 
-<section id="home" class="w3l-banner py-5">
-    <div class="container pt-5 pb-md-4">
-        <div class="row align-items-center">
-            <div class="col-md-6 banner-left pt-md-0 pt-5">
-                <h3 class="mb-sm-4 mb-3 title">
-                    <span class="type-js">
-                        Bilinmeyen <br>bir kod
-                    </span>
-                </h3>
 
-                <!--Eğitime başla butonu başlangıcı-->
-                <div class="mt-md-5 mt-4 mb-lg-0 mb-4">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Education">
-                        Eğitime Başla
-                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    </a>
+<div class="main-container">
+            <div class="right-side text-center">
+                <h4>Yazılım alanında ne öğrenmek istiyorsunuz</h4>
+                <a class="btn button-style mt-4" asp-area="" asp-controller="Education" asp-action="Index">
+                    Eğitime Başla<i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <section id="home" class="w3l-banner py-5">
+                <div class="container pt-5 pb-md-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 banner-left pt-md-0 pt-5">
+                            <h3 class="mb-sm-4 mb-3 title">
+                                <span class="type-js">
+                                    Bilinmeyen <br>bir kod
+                                </span>
+                            </h3>
+
+                            <!--Eğitime başla butonu başlangıcı-->
+                            <div class="mt-md-5 mt-4 mb-lg-0 mb-4">
+                                <a class="nav-link" asp-area="" asp-controller="Education" asp-action="Index">
+                                    Eğitime Başla
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <!--Eğitime başla butonu sonu-->
+
+                        </div>
+                        <div class="col-md-6 banner-right mt-md-0 mt-4">
+                            <img class="img-fluid" src="~/tema/assets/images/b1.png" alt=" ">
+                        </div>
+                    </div>
                 </div>
-                <!--Eğitime başla butonu sonu-->
+            </section>
 
-            </div>
-            <div class="col-md-6 banner-right mt-md-0 mt-4">
-                <img class="img-fluid" src="~/tema/assets/images/b1.png" alt=" ">
-            </div>
+
+            <!-- Anasayfa eğitim partialı -->
+            @await Html.PartialAsync("PartialIndexEducation")
+
+            <!-- Anasayfa eğitmenler partialı-->
+            @await Html.PartialAsync("PartialEducator")
+
+            <!-- Anasayfa blog partialı-->
+            @* @await Html.PartialAsync("PartialBlog")
+            *@
+
+            @await Component.InvokeAsync("BlogLastTreePost")
+
+
+            <!-- Yapay zeka partialı-->
+            @await Html.PartialAsync("PartialArticial")
         </div>
-    </div>
-</section>
-
-
-<!-- Anasayfa eğitim partialı -->
-@await Html.PartialAsync("PartialIndexEducation")
-
-<!-- Anasayfa eğitmenler partialı-->
-@await Html.PartialAsync("PartialEducator")
-
-<!-- Anasayfa blog partialı-->
-@* @await Html.PartialAsync("PartialBlog")
- *@
- 
-@await Component.InvokeAsync("BlogLastTreePost")
-
-
-<!-- Yapay zeka partialı-->
-@await Html.PartialAsync("PartialArticial")
 
 

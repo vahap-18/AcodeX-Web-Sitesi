@@ -1,6 +1,7 @@
 ﻿using DataAccsess.Abstract;
 using DataAccsess.Concrate;
 using EntityLayer.Concrate;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace DataAccsess.Repository
             c.SaveChanges();
         }
 
-        public Blog GetBlog(int id)
+        public Blog TGetBlog(int id)
         {
             throw new NotImplementedException();
         }
@@ -49,12 +50,17 @@ namespace DataAccsess.Repository
 
         public List<Blog> GetListAll()
         {
-            throw new NotImplementedException();
+           throw new NotImplementedException();
         }
 
-        public List<Blog> GetListAll(Expression<Func<Blog, bool>> filter)
+        public List<Blog> GetListAll(Expression<Func<Blog, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                return filter == null
+                    ? context.Set<Blog>().ToList()
+                    : context.Set<Blog>().Where(filter).ToList();
+            }
         }
 
         public List<Blog> GetListWithCategory()
@@ -64,7 +70,8 @@ namespace DataAccsess.Repository
 
         public List<Blog> GetListWithCategory(Blog entitiy)
         {
-            throw new NotImplementedException();
+            using var c = new Context();
+            return c.Blogs.Include(x => x.Category).ToList();
         }
 
         public void Insert(Blog t)
@@ -82,6 +89,11 @@ namespace DataAccsess.Repository
             using var c = new Context();
             c.Update(blog);
             c.SaveChanges();
+        }
+
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

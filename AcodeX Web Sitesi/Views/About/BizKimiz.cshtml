@@ -37,21 +37,26 @@
     <!-- Template Main CSS File -->
     <link href="~/tema/blogtema/assets/css/style.css" rel="stylesheet" />
     <link href="~/tema/assets/css/style-starter.css" rel="stylesheet" />
+    <style>
+        * {
+            style ="background-color:#121617"
+        }
+    </style>
 </head>
-<!-- ======= About Section ======= -->
+
 <body>
-    <section id="about" class="about">
-        <!-- ======= About Me ======= -->
-        <div class="about-me container">
-            <div class="row">
-                <div class="col-lg-3" data-aos="fade-right">
-                    <img src="~/tema/blogtema/assets/img/me.jpg" class="img-fluid" alt="Admin Profil">
-                </div>
-                <div class="col-lg-8 pt-4 pt-lg-0 " data-aos="fade-left" style="margin:30px">
-                    <h3>AcodeX Kurucusu</h3>
-                    <p class="fst-italic">
-                        Abdulvahap DOĞAN
-                    </p>                   
+    <div class="main-container">
+        <section id="about" class="about">
+            <div class="about-me container">
+                <div class="row">
+                    <div class="col-lg-3" data-aos="fade-right">
+                        <img src="~/tema/blogtema/assets/img/me.jpg" class="img-fluid" alt="Admin Profil">
+                    </div>
+                    <div class="col-lg-8 pt-4 pt-lg-0 " data-aos="fade-left" style="margin:30px">
+                        <h3>AcodeX Kurucusu</h3>
+                        <p class="fst-italic">
+                            Abdulvahap DOĞAN
+                        </p>
                         <div class="col-lg-6">
                             <ul>
                                 <li>
@@ -93,11 +98,9 @@
                     </p>
                 </div>
             </div>
+        </section>
 
-        </div><!-- End About Me -->
-        <!-- ======= Counts ======= -->
         <div class="counts container">
-
             <div class="row">
                 <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
                     <div class="count-box">
@@ -135,14 +138,13 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-        </div><!-- End Counts -->
-        <!-- ======= Skills  ======= -->
+        <!-- BECERİLER -->
         <div class="skills container">
             <div class="section-title">
                 <h2>BECERİLERİM</h2>
             </div>
-
             <div class="row skills-content">
 
                 <div class="col-lg-6">
@@ -210,77 +212,12 @@
             </div>
 
         </div>
-        <!-- End Skills -->
-
-        <!-- ======= Interests ======= -->
-        <div class="interests container">
-            <div class="section-title">
-                <h2>ÜZERİNDE ÇALIŞTIĞIM KONULAR</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="ri-microsoft-fill" style="color: #ffbb2c;"></i>
-                        <h3>Nesne Tabanlı Programlama (OOP)</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-                        <h3>Entitiy Framework</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-                    <div class="icon-box">
-                        <i class="ri-codepen-fill" style="color: #e80368;"></i>
-                        <h3>Model View Controller (MVC)</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-                    <div class="icon-box">
-                        <i class="ri-code-fill" style="color: #e361ff;"></i>
-                        <h3>ADO.NET</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                    <div class="icon-box">
-                        <i class="ri-gallery-view-2" style="color: #47aeff;"></i>
-                        <h3>Canva</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                    <div class="icon-box">
-                        <i class="ri-window-fill" style="color: #47aeff;"></i>
-                        <h3>C# Form</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                    <div class="icon-box">
-                        <i class="ri-safe-fill" style="color: #47aeff;"></i>
-                        <h3>Siber Güvenlik</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 mt-4">
-                    <div class="icon-box">
-                        <i class="ri-terminal-box-fill" style="color: #47aeff;"></i>
-                        <h3>Kali Linux</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-                <div class="icon-box">
-                    <i class="ri-server-fill" style="color: #47aeff;"></i>
-                    <h3>Veri Tabanı</h3>
-                </div>
-            </div>
-        </div> 
-        <!-- End Interests -->
-
+        <!--// BECERİLER -->
         <!--Geri Bildirim-->
         @await Html.PartialAsync("GeriBildirimAdmin")
         <!--//Geri Bildirim-->
-    </section><!-- End About Section -->
+    </div>
+
     <!-- Vendor JS Files -->
     <script src="~/tema/blogtema/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="~/tema/blogtema/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

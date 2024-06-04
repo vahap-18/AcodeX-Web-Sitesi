@@ -1,0 +1,176 @@
+﻿@model EntityLayer.Concrate.Writer;
+
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "AdminLayout";
+}
+
+@using (Html.BeginForm("WriterAdd", "AdminWriters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-container">
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Yazar Ekleme</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="AdminWriters" asp-action="WriterList">Yazar Profilleri</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Yazar Ekleme
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, "Yazar Adı")
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Yazar Adı" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Surname, "Yazar Soyad")
+                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Yazar Soyad" })
+                @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, "Yazar E-mail")
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Yazar E-mail" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PhoneNumber, "Telefon Numarası")
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Telefon Numarası" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, "Parola")
+                @Html.TextBoxFor(m => m.Password, new
+                    {
+                        @class = "form-control",
+                        placeholder = "Parola"
+                    })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Sex, "Cinsiyet")
+                @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.wm, new { @class = "form-control", placeholder = "Cinsiyet" })
+                @Html.ValidationMessageFor(m => m.Sex, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FieldOfInterest, "İlgi Alanları")
+                @Html.TextBoxFor(m => m.FieldOfInterest, new { @class = "form-control", placeholder = "İlgi Alanları" })
+                @Html.ValidationMessageFor(m => m.FieldOfInterest, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.KnowTeknologies, "Bildiği Teknolojiler")
+                @Html.TextBoxFor(m => m.KnowTeknologies, new { @class = "form-control", placeholder = "Bildiği Teknolojiler" })
+                @Html.ValidationMessageFor(m => m.KnowTeknologies, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ProgrammingLanguages, "Bildiği Programlama Dilleri")
+                @Html.TextBoxFor(m => m.ProgrammingLanguages, new { @class = "form-control", placeholder = "Bildiği Programlama Dilleri" })
+                @Html.ValidationMessageFor(m => m.ProgrammingLanguages, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Image, "Yazar Profili")
+                @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "Yazar Profili" })
+                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+            </div>
+
+            @*   <div class="form-group">
+        @Html.LabelFor(m => m.Image, "Blog Görseli")
+        <input type="file" name="Image" class="form-control-file form-control height-auto" />
+        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+        </div>
+        *@
+            <div class="form-group">
+                @Html.LabelFor(m => m.Country, "Ülke")
+                @Html.TextBoxFor(m => m.Country, new { @class = "form-control", rows = 6, placeholder = "Ülke" })
+                @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.Adress, "Adres")
+                @Html.TextBoxFor(m => m.Adress, new { @class = "form-control", rows = 6, placeholder = "Adres" })
+                @Html.ValidationMessageFor(m => m.Adress, "", new { @class = "text-danger" })
+            </div>
+              
+            <div class="form-group">
+                @Html.LabelFor(m => m.Status, "Durum")
+                @Html.TextBoxFor(m => m.Status, new { @class = "form-control", rows = 6, placeholder = "Durum" })
+                @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.About, "Hakkında")
+                @Html.TextAreaFor(m => m.About, new { @class = "form-control", rows = 6, placeholder = "Hakkında" })
+                @Html.ValidationMessageFor(m => m.About, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.GitHub, "GitHub")
+                @Html.TextBoxFor(m => m.GitHub, new { @class = "form-control", rows = 6, placeholder = "GitHub" })
+                @Html.ValidationMessageFor(m => m.GitHub, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.Instagram, "Instagram")
+                @Html.TextBoxFor(m => m.Instagram, new { @class = "form-control", rows = 6, placeholder = "Instagram" })
+                @Html.ValidationMessageFor(m => m.Instagram, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.Facebook, "Facebook")
+                @Html.TextBoxFor(m => m.Facebook, new { @class = "form-control", rows = 6, placeholder = "Facebook" })
+                @Html.ValidationMessageFor(m => m.Facebook, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.Youtube, "Youtube")
+                @Html.TextBoxFor(m => m.Youtube, new { @class = "form-control", rows = 6, placeholder = "Youtube" })
+                @Html.ValidationMessageFor(m => m.Youtube, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(m => m.LinkedIn, "LinkedIn")
+                @Html.TextBoxFor(m => m.LinkedIn, new { @class = "form-control", rows = 6, placeholder = "LinkedIn" })
+                @Html.ValidationMessageFor(m => m.LinkedIn, "", new { @class = "text-danger" })
+            </div>
+             
+            <div class="form-group">
+                @Html.LabelFor(m => m.Tweeter, "Tweeter")
+                @Html.TextBoxFor(m => m.Tweeter, new { @class = "form-control", rows = 6, placeholder = "Tweeter" })
+                @Html.ValidationMessageFor(m => m.Tweeter, "", new { @class = "text-danger" })
+            </div>
+             
+            <div class="form-group">
+                @Html.LabelFor(m => m.Website, "Website")
+                @Html.TextBoxFor(m => m.Website, new { @class = "form-control", rows = 6, placeholder = "Website" })
+                @Html.ValidationMessageFor(m => m.Website, "", new { @class = "text-danger" })
+            </div>
+
+
+            @* Blog Ekle butonu *@
+            <button type="submit" class="btn btn-primary btn-block">Yazar Ekle</button>
+            <a class="btn btn-success btn-block" asp-controller="AdminWriters" asp-action="WriterList">İptal</a>
+        </div>
+    </div>
+
+}
+

@@ -1,45 +1,16 @@
 ﻿using DataAccsess.Abstract;
 using DataAccsess.Concrate;
+using DataAccsess.Repository;
 using EntityLayer.Concrate;
 using System.Linq.Expressions;
+using System.Net.Http.Headers;
 
 namespace DataAccsess.EntityFramework
 {
-    public class EFWriterRepository : IGenericDal<Writer>, IWriterDal
+    public class EFWriterRepository : GenericRepository<Writer>, IWriterDal
     {
-        public void Delete(Writer t)
+        public EFWriterRepository()
         {
-            throw new NotImplementedException();
-        }
-
-        public Writer GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Writer> GetListAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Writer> GetListAll(Expression<Func<Writer, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-        public void Insert(Writer t)
-        {
-            using (var context = new Context()) // Veritabanı bağlantısını oluştur
-            {
-                // Yazarı ekleyerek değişiklikleri takip et
-                context.Writers.Add(t);
-                // Değişiklikleri veritabanına kaydet
-                context.SaveChanges();
-            }
-        }
-
-        public void Update(Writer t)
-        {
-            throw new NotImplementedException();
         }
     }
 }

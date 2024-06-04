@@ -1,0 +1,67 @@
+﻿
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.da-card {
+    flex: 0 0 20%; /* Kartların genişliğini %20 yaparak her sıraya 5 kart sığmasını sağla */
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: transparent; /* Arka planı saydam yapar */
+    border: none; /* Kenar çizgisini kaldırır */
+    outline: none; /* Odaklandığında dış çizgiyi kaldırır */
+    box-shadow: none; /* Gölgeyi kaldırır */
+}
+
+    .carousel-control-prev i, .carousel-control-next i {
+        color: black; /* Düğme simgesinin rengini ayarlar */
+    }
+
+    .carousel-control-prev i {
+        float: left; /* İkonu sola hizalar */
+        font-size: 2em; /* İkon boyutunu 2 kat büyütür */
+        color: white; /* İkon rengini beyaz yapar */
+        margin-right: 5px; /* Sağ tarafa boşluk ekler */
+    }
+
+    .carousel-control-next i {
+        float: right; /* İkonu sağa hizalar */
+        font-size: 2em; /* İkon boyutunu 2 kat büyütür */
+        color: white; /* İkon rengini beyaz yapar */
+        margin-left: 5px; /* Sol tarafa boşluk ekler */
+    }
+
+.carousel-control-prev {
+    left: 0;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .da-card {
+        flex: 0 0 33.33%; /* Sayfa genişliği 425-768px arasında 4 kart */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .da-card {
+        flex: 0 0 50%; /* Sayfa genişliği 480px altında 3 kart */
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+}

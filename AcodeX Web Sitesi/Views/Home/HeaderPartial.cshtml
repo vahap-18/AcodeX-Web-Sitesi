@@ -1,0 +1,306 @@
+﻿@*
+Ana Header Layout parçası
+*@
+<style>
+    .theme-switch input[type="checkbox"] {
+        display: none;
+    }
+
+    .theme-switch .toggle-container {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        background-color: #ddd;
+        border-radius: 15px;
+    }
+
+    .theme-switch .toggle-button {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 26px;
+        height: 26px;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    .theme-switch input[type="checkbox"]:checked + .toggle-container .toggle-button {
+        transform: translateX(30px);
+    }
+
+    .theme-switch .sun-icon, .theme-switch .moon-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background-size: cover;
+        background-position: center;
+        transition: opacity 0.3s ease;
+    }
+
+    .theme-switch .sun-icon {
+        left: 5px;
+        background-image: url('https://img.icons8.com/material-rounded/24/000000/sun--v1.png');
+        opacity: 1; /* Tema açık olduğunda görünür */
+    }
+
+    .theme-switch .moon-icon {
+        right: 5px;
+        background-image: url('https://img.icons8.com/material-rounded/24/000000/moon-satellite.png');
+        opacity: 0; /* Tema kapalı olduğunda gizlenmiş */
+    }
+
+    .theme-switch input[type="checkbox"]:checked + .toggle-container .sun-icon {
+        opacity: 0; /* Tema açık olduğunda gizlenmiş */
+    }
+
+    .theme-switch input[type="checkbox"]:checked + .toggle-container .moon-icon {
+        opacity: 1; /* Tema kapalı olduğunda görünür */
+    }
+</style>
+
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon bi bi-list"></div>
+        <div class="search-toggle-icon bi bi-search"
+             data-toggle="header_search"></div>
+        <div class="header-search">
+            <form>
+                <div class="form-group mb-0">
+                    <i class="dw dw-search2 search-icon"></i>
+                    <input type="text"
+                           class="form-control search-input"
+                           placeholder="Arama" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow"
+                   href="javascript:;"
+                   data-toggle="right-sidebar">
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
+        </div>
+        <div class="dashboard-setting user-notification">
+            <div class="text-align-justify ">
+                <a asp-controller="Login" asp-action="Index" class="btn btn-primary">Giriş Yap</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="right-sidebar">
+    <div class="sidebar-title">
+        <h3 class="weight-600 font-16 text-blue">
+            Arayüz Düzenleme
+            <span class="btn-block font-weight-400 font-12">Arayüz Ayarlama</span>
+        </h3>
+        <div class="close-sidebar" data-toggle="right-sidebar-close">
+            <i class="icon-copy ion-close-round"></i>
+        </div>
+    </div>
+
+    <div class="right-sidebar-body customscroll">
+        <div class="right-sidebar-body-content">
+            <div class="cont-ser-position">
+                <nav class="navigation">
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" checked>
+                            <div class="toggle-container">
+                                <div class="toggle-button"><button class="switch-btn" data-color="#0099ff"></button></div>
+                            </div>
+                        </label>
+                    </div>
+                </nav>
+                <br />
+            </div>
+
+
+            <h4 class="weight-600 font-18 pb-10 font-14 text-blue">Header Arkaplan</h4>
+            <div class="sidebar-btn-group pb-30 mb-10">
+                <a href="javascript:void(0);"
+                   class="btn btn-outline-primary header-white active">Açık</a>
+                <a href="javascript:void(0);"
+                   class="btn btn-outline-primary header-dark">Koyu</a>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10 font-14 text-blue">Menü Arkaplan</h4>
+            <div class="sidebar-btn-group pb-30 mb-10">
+                <a href="javascript:void(0);"
+                   class="btn btn-outline-primary sidebar-light">Açık</a>
+                <a href="javascript:void(0);"
+                   class="btn btn-outline-primary sidebar-dark active">Koyu</a>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10 font-14 text-blue">Menü İkonları</h4>
+            <div class="sidebar-radio-group pb-10 mb-10">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebaricon-1"
+                           name="menu-dropdown-icon"
+                           class="custom-control-input"
+                           value="icon-style-1"
+                           checked="" />
+                    <label class="custom-control-label" for="sidebaricon-1">
+                        <i class="fa fa-angle-down"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebaricon-2"
+                           name="menu-dropdown-icon"
+                           class="custom-control-input"
+                           value="icon-style-2" />
+                    <label class="custom-control-label" for="sidebaricon-2">
+                        <i class="ion-plus-round"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebaricon-3"
+                           name="menu-dropdown-icon"
+                           class="custom-control-input"
+                           value="icon-style-3" />
+                    <label class="custom-control-label" for="sidebaricon-3">
+                        <i class="fa fa-angle-double-right"></i>
+                    </label>
+                </div>
+            </div>
+
+            <h4 class="weight-600 font-18 pb-10 font-14 text-blue">Alt Menü İkon</h4>
+            <div class="sidebar-radio-group pb-30 mb-10">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-1"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-1"
+                           checked="" />
+                    <label class="custom-control-label" for="sidebariconlist-1">
+                        <i class="ion-minus-round"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-2"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-2" />
+                    <label class="custom-control-label" for="sidebariconlist-2">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-3"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-3" />
+                    <label class="custom-control-label" for="sidebariconlist-3">
+                        <i class="dw dw-check"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-4"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-4"
+                           checked="" />
+                    <label class="custom-control-label" for="sidebariconlist-4">
+                        <i class="icon-copy dw dw-next-2"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-5"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-5" />
+                    <label class="custom-control-label" for="sidebariconlist-5">
+                        <i class="dw dw-fast-forward-1"></i>
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio"
+                           id="sidebariconlist-6"
+                           name="menu-list-icon"
+                           class="custom-control-input"
+                           value="icon-list-style-6" />
+                    <label class="custom-control-label" for="sidebariconlist-6">
+                        <i class="dw dw-next"></i>
+                    </label>
+                </div>
+            </div>
+
+            <div class="reset-options pt-30 text-center">
+                <button class="btn btn-danger" id="reset-settings">
+                    Ayarları sıfırla
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/tema/assets/js/theme-change.js"></script>
+<script>
+    function autoType(elementClass, typingSpeed) {
+        var thhis = $(elementClass);
+        thhis.css({
+            "position": "relative",
+            "display": "inline-block"
+        });
+        thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+        thhis = thhis.find(".text-js");
+        var text = thhis.text().trim().split('');
+        var amntOfChars = text.length;
+        var newString = "";
+        thhis.text("|");
+        setTimeout(function () {
+            thhis.css("opacity", 1);
+            thhis.prev().removeAttr("style");
+            thhis.text("");
+            for (var i = 0; i < amntOfChars; i++) {
+                (function (i, char) {
+                    setTimeout(function () {
+                        newString += char;
+                        thhis.text(newString);
+                    }, i * typingSpeed);
+                })(i + 1, text[i]);
+            }
+        }, 1500);
+    }
+
+    $(document).ready(function () {
+        // Now to start autoTyping just call the autoType function with the
+        // class of outer div
+        // The second paramter is the speed between each letter is typed.
+        autoType(".type-js", 200);
+    });
+</script>
+<!-- //theme switch js (light and dark)-->
+
+<script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const toggleButton = document.querySelector('.toggle-button');
+
+    toggleSwitch.addEventListener('change', function () {
+        if (this.checked) {
+            // Tema açık olduğunda
+            toggleButton.classList.remove('toggle-off');
+            toggleButton.classList.add('toggle-on');
+        } else {
+            // Tema kapalı olduğunda
+            toggleButton.classList.remove('toggle-on');
+            toggleButton.classList.add('toggle-off');
+        }
+    });
+</script>

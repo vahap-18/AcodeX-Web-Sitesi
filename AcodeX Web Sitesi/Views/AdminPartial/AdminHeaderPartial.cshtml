@@ -1,0 +1,66 @@
+﻿@*
+   Admin Header kısmı
+*@
+
+<div class="header">
+    <div class="header-left">
+        <!-- ARAMA -->
+        <div class="menu-icon bi bi-list"></div>
+        <div class="search-toggle-icon bi bi-search"
+             data-toggle="header_search"></div>
+        <div class="header-search">
+            <form>
+                <div class="form-group mb-0">
+                    <i class="dw dw-search2 search-icon"></i>
+                    <input type="text"
+                           class="form-control search-input"
+                           placeholder="Arama" />
+                </div>
+            </form>
+        </div>
+        <!-- //ARAMA -->
+    </div>
+
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a class="dropdown-toggle no-arrow"
+                   href="javascript:;"
+                   data-toggle="right-sidebar">
+                    <i class="dw dw-settings2"></i>
+                </a>
+            </div>
+        </div>
+
+     @*    <!--Yazarın Bildirimleri -->
+        @await Component.InvokeAsync("WriterMessageNotification")
+        <!--// Yazarın Bildirimleri --> *@
+
+        <div class="user-info-dropdown">
+            <div class="dropdown">
+                <a class="dropdown-toggle"
+                   href="#"
+                   role="button"
+                   data-toggle="dropdown">
+                    <span class="user-icon">
+                        <img src="~/admin/vendors/images/photo1.jpg" alt="" />
+                    </span>
+                    <span class="user-name">A.Vahap Doğan</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                    <a class="dropdown-item" asp-controller="Admin" asp-action="WriterList"> <i class="bi bi-person"></i> Yazar Profilleri</a>
+                    <a class="dropdown-item"asp-controller="Admin" asp-action="Dashboard"><i class="bi bi-speedometer2"></i> Gösterge Paneli</a>
+                    <a class="dropdown-item" asp-controller="Admin" asp-action="AnalysisPanel"> <i class="bi bi-pie-chart"></i> Analiz Paneli</a>
+                    <a class="dropdown-item" asp-controller="Login" asp-action="Index"><i class="dw dw-logout"></i> Çıkış</a>
+                    <a class="dropdown-item" asp-controller="Dashboard" asp-action="Dashboard"><i class="icon-copy bi bi-person-lines-fill"></i> Yazar Sayfasına Git</a>
+                    <a class="dropdown-item" asp-controller="Home" asp-action="Index"><i class="bi bi-reply"></i> Siteye Git</a>
+                </div>
+            </div>
+        </div>
+        <div class="github-link">
+            <a href="https://github.com/vahap-18" target="_blank">
+                <img src="~/admin/vendors/images/github.svg" alt="" />
+            </a>
+        </div>
+    </div>
+</div>

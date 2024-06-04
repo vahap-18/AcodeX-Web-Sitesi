@@ -1,0 +1,138 @@
+﻿@using System.Collections.Generic;
+@using DataAccsess.Concrate
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model IPagedList<EntityLayer.Concrate.Education>;
+
+@{
+    ViewData["Title"] = "EducationList";
+    Layout = "AdminLayout";
+    int sıraNo = 1;
+}
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Eğitimler</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Eğitimler
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        <a asp-controller="AdminEducation" asp-action="EducationAdd" class="btn btn-primary">Eğitim Ekle</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-box mb-30">
+                <div class="pb-20">
+                    <div class="pd-20">
+                        <h4 class="text-blue h4">Eğitimler</h4>
+                    </div>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Eğitim Görseli</th>
+                                <th>Eğitim Adı</th>
+                                <th>Eğitmen Adı</th>
+                                <th>Kategoriler</th>
+                                <th>İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@sıraNo</td>
+                                    <td>@item.Image</td>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        @using (var context = new Context()) 
+                                        {
+                                            var writer = context.Writers.FirstOrDefault(w => w.WriterId == item.WriterId);
+                                            if (writer != null)
+                                            {
+                                                <p> @writer.Name</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Yazar bulunamadı</p>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @using (var context = new Context())
+                                        {
+                                            var category = context.Categories.FirstOrDefault(w => w.CategoryId == item.CategoryId);
+                                            if (category != null)
+                                            {
+                                                <p> @category.Name</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Yazar bulunamadı</p>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                               href="#"
+                                               role="button"
+                                               data-toggle="dropdown">
+                                                <i class="dw dw-more"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <a class="dropdown-item" href="EducationDetail/@item.EducationId"><i class="icon-copy bi bi-eye"></i>Önizle</a>
+                                                <a class="dropdown-item" href="EducationUpdate/@item.EducationId"><i class="icon-copy dw dw-edit-1"></i>Düzenle</a>
+                                                <a class="dropdown-item" href="EducationDelete/@item.EducationId"><i class="icon-copy bi bi-trash3"></i>Sil</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <div class="d-flex justify-content-center">
+                        @Html.PagedListPager(
+                                 Model,
+                                 page => Url.Action("EducationList", new { page = page }),
+                                 new PagedListRenderOptions
+                        {
+                            DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                            DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                            DisplayLinkToIndividualPages = true,
+                            DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                            EllipsesFormat = "&#8230;",
+                            LinkToFirstPageFormat = "İlk",
+                            LinkToPreviousPageFormat = "Önceki",
+                            LinkToIndividualPageFormat = "{0}",
+                            LinkToNextPageFormat = "Sonraki",
+                            LinkToLastPageFormat = "Son",
+                            PageClasses = new[] { "page-link" },
+                            UlElementClasses = new[] { "pagination" },
+                            LiElementClasses = new[] { "page-item" },
+                            ActiveLiElementClass = "active"
+
+                        }
+                                 )
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

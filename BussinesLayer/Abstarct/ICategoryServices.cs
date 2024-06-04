@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 namespace BussinesLayer.Abstarct
 {
     // Bussines katmanındaki Abstract klasöründeki interfaceler Service olarak adlandırılır.
-    public interface ICategoryServices
+    public interface ICategoryServices : IGenericServices<Category>
     {
-        void CategoryAdd(Category category);
-        void CategoryDelete(Category category);
-        void CategoryUpdate(Category category);
-        List<Category> GetList();
-        Category GetById(int id);
+        
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Abstract
 {
-    public interface ICommentDal : IGenericDal<Comment>
+    public interface ICommentDal : BlogManager<Comment>
     {
     }
 }

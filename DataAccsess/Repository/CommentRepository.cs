@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Repository
 {
-    public class CommentRepository : IGenericDal<Comment>
+    public class CommentRepository : BlogManager<Comment>
     {
         public void Delete(Comment t)
         {

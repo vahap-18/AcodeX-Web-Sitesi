@@ -13,6 +13,10 @@ namespace BussinesLayer.Concrate
     {
         ICommentDal _commentdal;
 
+        public CommentManager()
+        {
+        }
+
         public CommentManager(ICommentDal commentdal)
         {
             _commentdal = commentdal;
@@ -26,6 +30,31 @@ namespace BussinesLayer.Concrate
         public List<Comment> GetList(int id)
         {
             return _commentdal.GetListAll(x=> x.BlogId == id);
+        }
+
+        public List<Comment> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TAdd(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Comment t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comment TGetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Comment t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,0 +1,52 @@
+﻿@*
+    Yazarın  bildirimleri
+*@
+@using EntityLayer.Concrate
+@model List<Notification>
+
+<div class="user-notification">
+    <div class="dropdown">
+        <a class="dropdown-toggle no-arrow"
+           href="#"
+           role="button"
+           data-toggle="dropdown">
+            <i class="icon-copy dw dw-notification"></i>
+            <span class="badge notification-active"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="notification-list mx-h-350 customscroll">
+                <ul>
+                    <h5 class="text-center text-danger">Bildirimler</h5>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <li>
+                           
+                                    <i class="preview bi bi-chat-left-quote-fill" style="height:50px; width:50px"></i>
+                               
+                                <a href="~/Views/Writer/WriterNotification">
+                                    <div class="preview-item-content">
+                                        <h6 class="preview-subject">@item.NotificationType</h6>
+                                        <p class="text-muted">@item.NotificationDetails</p>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#">
+                                <div class="preview-item-content">
+                                    <p class="preview-subject">Bildiriminiz yoktur</p>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <small><a asp-controller="Writer" asp-action="WriterNotification" class="text-center"><i class="bi bi-chevron-double-right"></i> Diğer Bildirimler</a></small>
+        </div>
+    </div>
+</div>

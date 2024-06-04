@@ -20,37 +20,26 @@ namespace AcodeX_Web_Sitesi.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Education()
+        public PartialViewResult HeaderPartial()
         {
-            return View();
-        }
-        public IActionResult Artificial()
-        {
-            return View();
+            return PartialView();
         }
 
-        public IActionResult Blog()
+        public PartialViewResult NavbarPartial()
         {
-            return View();
+            return PartialView();
         }
-        public IActionResult MyAccount()
+
+        public PartialViewResult SettingsRightPartial()
         {
-            return View();
+            return PartialView();
         }
-        public IActionResult Forum()
-        {
-            return View();
-        }
+
     }
 }

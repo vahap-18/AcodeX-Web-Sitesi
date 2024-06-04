@@ -1,0 +1,94 @@
+﻿@using EntityLayer.Concrate
+@model List<Education>
+
+@{
+    ViewData["Title"] = "EducationListByWriter";
+    Layout = "WriterLayout";
+    int sıraNo = 1;
+}
+
+<link href="~/admin/src/styles/style.css" rel="stylesheet" />
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Kurslar</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="Dashboard" asp-action="Dashboard">Anasayfa</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Kurslarım
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        <div class="btn-list">
+                            <a asp-area="" asp-controller="Education" asp-action="EducationAdd">
+                                <button type="button"
+                                        class="btn btn-primary">
+                                    Yeni Kurs Oluştur
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-box mb-30">
+                <div class="pd-20">
+                    <h4 class="text-blue h4">Kurslar</h4>
+                </div>
+                <div class="pb-20">
+                    <table class="data-table table nowrap equal-width-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Görsel</th>
+                                <th>Kurs Adı</th>
+                                <th>Açıklama</th>
+                                <th>Süre</th>
+                                <th>Puan</th>
+                                <th>Oluşturma Tarihi</th>
+                                <th>Kategori</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="table-plus">@sıraNo</td>
+                                    <td>@item.Image</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>20 saat</td>
+                                    <td>8/10 puan</td>
+                                    <td>@(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))</td>
+                                    <td>@item.Category.Name</td>
+                                    <td>@item.Status</td>
+                                    <td>
+                                        <a href="EducationDetails/@item.EducationId" style="margin:5px"><i class="dw dw-eye"></i></a>
+                                    <a href="ducationEdit/@item.EducationId" style="margin:5px"><i class="dw dw-edit2"></i></a>
+                                    <a href="EducationDelete/@item.EducationId" style="margin:5px"><i class="dw dw-delete-3"></i></a>
+                                    </td>
+                                </tr>
+                                sıraNo++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

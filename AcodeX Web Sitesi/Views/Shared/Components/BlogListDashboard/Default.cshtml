@@ -1,0 +1,85 @@
+﻿@*
+    Yönetim panelinde yazarın anasayfasında listelenecek blogların listesi.
+*@
+
+@using EntityLayer.Concrate
+@model List<Blog>
+
+<link href="~/admin/src/styles/style.css" rel="stylesheet" />
+
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Son 5 Blog</h4>
+    </div>
+    <div class="pb-20">
+                <table class="data-table table nowrap equal-width-table">
+            <thead>
+                <tr>
+                    <th>Blog Id</th>
+                    <th>Blog Başlığı</th>
+                    <th>Açıklama</th>
+                    <th>İçerik</th>
+                    <th>Oluşturma Tarihi</th>
+                    <th>Kategori</th>
+                    <th>Görsel</th>
+                    <th>Durum</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="table-plus">@item.BlogId</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>
+                            <p>
+                                @if (!string.IsNullOrEmpty(item.Content) && item.Content.Length > 100)
+                                {
+                                    string content = item.Content;
+                                    int length = content.Length > 50 ? 50 : content.Length;
+                                    int lastIndex = content.Substring(0, length).LastIndexOf(" ");
+                                    lastIndex = lastIndex == -1 ? length : lastIndex;
+                                    string preview = content.Substring(0, lastIndex);
+                                <p>@preview</p>
+                                }
+                                else
+                                {
+                                    @item.Content
+                                }
+                            </p>
+                        </td>
+                        <td>@(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))</td>
+                        <td>@item.Category.Name</td>
+                        <td>@item.Image</td>
+
+                        @*
+                    GÖRSEL SONRADAN EKLENECEKTİR
+
+                    <td class="table-plus">
+                    <img src="~/admin/vendors/images/chat-img1.jpg"
+                    width="70"
+                    height="70"
+                    alt="" />
+                    </td>
+                    *@
+
+                        <td>@item.Status</td>
+                        <td>
+                            <a href="/Blog/WriterBlogDetail/@item.BlogId" style="color:red"> Önizleme</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

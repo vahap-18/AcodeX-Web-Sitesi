@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrate
+@model List<Education>
+
+
+@*
+   Video eğitimler anasayfası
+*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<link href="path/to/bootstrap-icons.css" rel="stylesheet">
+<link href="~/tema/assets/css/card-sayisi.css" rel="stylesheet" />
+
+<div class="main-container">
+    <h5 class="h5 text-blue mb-10">Yazılım & Programlama</h5>
+    <p class="mb-30">
+        Kodlama hakkında gelişmek isteyenlerin alması gereken eğitimler
+    </p>
+
+    <div class="row clearfix mb-4 mb-md-5">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                @foreach (var item in Model)
+                {
+                    <div class="da-card">
+                        <div class="da-card-photo">
+                            <img src="~/admin/vendors/images/product-img2.jpg" class="d-block w-100" alt="Eğitim Görseli" />
+                            <div class="da-overlay da-slide-bottom">
+                                <ul class="clearfix">
+                                    <p class="card-text text-xs text-light p-2 text-left">
+                                        @item.Description 
+                                    </p>
+                                    <em class="text-center text-success"> python, yapay zeka</em>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title weight-500">
+                                <a href="EducationDetails/@item.EducationId">@item.Title</a>
+                            </h5>
+                            <p class="card-text"><a href="#"> <b>A. Vahap Doğan</b></a></p>
+
+                            <p class="card-text">
+                                <small class="text-muted">12 saat eğitim içeriği</small>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

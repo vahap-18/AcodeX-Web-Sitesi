@@ -1,6 +1,7 @@
 ﻿@*
-    User Layout Blog Index sayfası
+    Blog index sayfası
 *@
+@using DataAccsess.Concrate
 @using EntityLayer.Concrate
 @model List<Blog>
 
@@ -22,8 +23,25 @@
 <body>
 
     <!-- Blog sayfa başlangıcı -->
+    <div class="main-container">
     <div class="w3l-grids-block-5 py-5">
-       
+            <div class="page-header">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Blog Eğitim</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a asp-area="" asp-controller="Home" asp-action="Index"> Anasayfa</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Bloglar
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div class="container">
                 <div class="row mt-sm-5 pt-lg-3">
                     <!-- foreach döngüsünün başlangıcı-->
@@ -39,7 +57,22 @@
                                         <h5><i class="fa fa-eye"> 250</i></h5>
                                     </div>
 
-                                     <h5><i class="fa fa-category"> @item.Category.Name</i></h5>
+                                    <h5>
+                                        <i class="fa fa-category">
+                                            @using (var context = new Context())
+                                            {
+                                                var category = context.Categories.FirstOrDefault(w => w.CategoryId == @item.CategoryId);
+                                                if (category != null)
+                                                {
+                                                    <p> @category.Name</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Yazar bulunamadı</p>
+                                                }
+                                            }
+                                        </i>
+                                    </h5>
                                     <h4><a href="../Blog/BlogReadAll/@item.BlogId" style="text-decoration:none">@item.Title</a></h4>
                                     <p>
                                         <!-- İf ile yapılan şartta Content içerisinde 200 karakter olup olmadığını kontrol eder ve eğer 200 karakter var ise açıklama olarak oraya yazar.-->
@@ -87,6 +120,7 @@
                 <!-- //Sonraki Sayfaya geçiş -->
                 </div>
             </div>
+    </div>
     </div>
     <!-- Blog sayfa bitiş -->
 

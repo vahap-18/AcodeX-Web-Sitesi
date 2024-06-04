@@ -1,5 +1,6 @@
 ﻿using DataAccsess.Abstract;
 using DataAccsess.Concrate;
+using EntityLayer.Concrate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Repository
 {
-    public class GenericRepository<T> : IGenericDal<T> where T : class
+    public class GenericRepository<T> : BlogManager<T> where T : class
     {
         public void Delete(T t)
         {
@@ -49,5 +50,6 @@ namespace DataAccsess.Repository
             c.Update(t);
             c.SaveChanges();
         }
+
     }
 }

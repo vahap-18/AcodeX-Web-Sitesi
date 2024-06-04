@@ -1,0 +1,88 @@
+﻿@model EntityLayer.Concrate.Education;
+
+
+@{
+    ViewData["Title"] = "EducationEdit";
+    Layout = "WriterLayout";
+}
+
+
+@using (Html.BeginForm("EducationEdit", "Education", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-container">
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Kurs Düzenleme</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="Education" asp-action="EducationListByWriter">Kurslarım</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Kurs Düzenle
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Title, "Eğitim Başlığı")
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Eğiitm Başlığı" })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, "Kısa Açıklama")
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Kısa Açıklama" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CategoryId, "Kategori")
+                @Html.TextBoxFor(m => m.CategoryId, new { @class = "form-control", placeholder = "KategoriBaşlığı" })
+                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Image, "Kurs Görseli")
+                @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "Blog Görseli" })
+                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+            </div>
+
+            @*   <div class="form-group">
+        @Html.LabelFor(m => m.Image, "Blog Görseli")
+        <input type="file" name="Image" class="form-control-file form-control height-auto" />
+        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+        </div>
+        *@
+            <div class="form-group">
+                @Html.LabelFor(m => m.ContentText, "Kurs Anlatımı")
+                @Html.TextAreaFor(m => m.ContentText, new { @class = "form-control", rows = 6, placeholder = "Blog İçeriği" })
+                @Html.ValidationMessageFor(m => m.ContentText, "", new { @class = "text-danger" })
+            </div>
+             <div class="form-group">
+                @Html.LabelFor(m => m.Requirement, "Kurs Gereksinimleri")
+                @Html.TextAreaFor(m => m.Requirement, new { @class = "form-control", rows = 6, placeholder = "Kurs Gereksinimleri" })
+                @Html.ValidationMessageFor(m => m.Requirement, "", new { @class = "text-danger" })
+            </div>
+              <div class="form-group">
+                @Html.LabelFor(m => m.VideoUrls, "Video URL'leri")
+                @Html.TextAreaFor(m => m.VideoUrls, new { @class = "form-control", rows = 6, placeholder = "Kurs Gereksinimleri" })
+                @Html.ValidationMessageFor(m => m.VideoUrls, "", new { @class = "text-danger" })
+            </div>
+
+
+            @* Blog Ekle butonu *@
+            <button type="submit" class="btn btn-primary btn-block">Güncelle</button>
+            <a class="btn btn-success btn-block" asp-controller="Education" asp-action="EducationListByWriter">İptal</a>
+        </div>
+    </div>
+
+}
+

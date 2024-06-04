@@ -18,10 +18,30 @@ namespace BussinesLayer.Concrate
             _aboutDal = aboutDal;
         }
 
-        public List<About> GetList()
+		public About TGetById(int id)
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<About> GetList()
         {
            return _aboutDal.GetListAll();
         }
-    }
+
+		public void TAdd(About t)
+		{
+			_aboutDal.Insert(t);
+		}
+
+		public void TDelete(About t)
+		{
+			_aboutDal.Delete(t);
+		}
+
+		public void TUpdate(About t)
+		{
+			_aboutDal.Update(t);
+		}
+	}
 }
     

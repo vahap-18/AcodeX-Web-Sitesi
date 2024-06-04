@@ -1,0 +1,235 @@
+﻿@*
+    Kullanıcı Layout sayfasıdır.
+*@
+
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AcodeX - Bilinmeyen bir kod</title>
+    <link href="//fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/tema/assets/css/style-starter.css">
+</head>
+
+<body>
+    <!--Header partialı-->
+    @await Html.PartialAsync("HeaderPartial")
+
+    @RenderBody()
+
+    <!-- Footer partialı-->
+    @await Html.PartialAsync("PartialFooter")
+
+
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-level-up" aria-hidden="true"></span>
+    </button>
+    <script>
+        // Kullanıcı belgeden en üst 20 piksel aşağı kaydırdığında, düğmeyi göster
+        window.onscroll = function () {
+            kontrolEt();
+        };
+
+        function kontrolEt() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                // Sayfa 20 piksel veya daha fazla aşağı kaydırıldıysa, düğmeyi görünür yap
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                // Aksi halde düğmeyi gizle
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // Düğmeye tıklandığında, belgenin en üstüne kaydır
+        function enUsteGit() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <script>
+        // Belirli bir düğmeye tıklandığında dropdown menülerin açılmasını veya kapanmasını sağlayan fonksiyon
+        function toggleDropdown() {
+            var dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show'); // 'show' sınıfını ekleyerek veya kaldırarak dropdown menünün görünürlüğünü değiştirir
+        }
+    </script>
+
+    <script src="~/tema/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/tema/assets/js/theme-change.js"></script>
+    <script>
+        function autoType(elementClass, typingSpeed) {
+            // Elementi seç ve stile göre düzenle
+            var thhis = $(elementClass);
+            thhis.css({
+                "position": "relative",
+                "display": "inline-block"
+            });
+
+            // Cursörü ekle
+            thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+
+            // Text içeriğini al ve boşlukları temizle
+            thhis = thhis.find(".text-js");
+            var text = thhis.text().trim().split('');
+            var amntOfChars = text.length;
+            var newString = "";
+
+            // Cursörü göster ve başlangıçtaki "|" karakterini kaldır
+            thhis.text("|");
+            setTimeout(function () {
+                thhis.css("opacity", 1);
+                thhis.prev().removeAttr("style");
+                thhis.text("");
+
+                // Her bir karakteri belirli bir hızda ekleyerek metni oluştur
+                for (var i = 0; i < amntOfChars; i++) {
+                    (function (i, char) {
+                        setTimeout(function () {
+                            newString += char;
+                            thhis.text(newString);
+                        }, i * typingSpeed);
+                    })(i + 1, text[i]);
+                }
+            }, 1500); // Animasyonun başlangıç gecikmesi
+        }
+
+        // Sayfa yüklendiğinde çalışacak olan fonksiyon
+        $(document).ready(function () {
+            // autoType fonksiyonunu çağır ve hızı belirt
+            autoType(".type-js", 200);
+        });
+    </script>
+
+
+    <script src="~/tema/assets/js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Zoom animasyonlu popup için ayarları belirle
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in' // Zoom animasyonu sınıfı
+            });
+
+            // Move animasyonlu popup için ayarları belirle
+            $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom' // Move animasyonu sınıfı
+            });
+        });
+    </script>
+
+
+    <script>
+        // Sayfa kaydırıldığında tetiklenen olay
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            // Sayfa yukarı kaydırıldığında belirli bir noktadan sonra sabit navigasyonu ekle
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        // Mobil menü düğmesine tıklandığında tetiklenen olay
+        $(".navbar-toggler").on("click", function () {
+            // Header elementine 'active' sınıfını ekle veya kaldır
+            $("header").toggleClass("active");
+        });
+
+        // Sayfa yüklendiğinde veya yeniden boyutlandırıldığında tetiklenen olay
+        $(document).on("ready", function () {
+            // Eğer pencere genişliği 991 pikselden büyükse
+            if ($(window).width() > 991) {
+                // Header elementinden 'active' sınıfını kaldır
+                $("header").removeClass("active");
+            }
+            // Pencere boyutu yeniden boyutlandırıldığında
+            $(window).on("resize", function () {
+                // Eğer pencere genişliği 991 pikselden büyükse
+                if ($(window).width() > 991) {
+                    // Header elementinden 'active' sınıfını kaldır
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Dropdown menülerin üzerine gelindiğinde açılmasını sağlayan fonksiyon
+        function openDropdown() {
+            var dropdownMenu = this.querySelector('.dropdown-menu');
+            dropdownMenu.style.display = 'block';
+        }
+
+        // Dropdown menülerden çıkıldığında kapanmasını sağlayan fonksiyon
+        function closeDropdown() {
+            var dropdownMenu = this.querySelector('.dropdown-menu');
+            dropdownMenu.style.display = 'none';
+        }
+
+        // Navbar içerisindeki tüm dropdown menülere event listener ekleyerek işlemi gerçekleştiriyoruz
+        var dropdowns = document.querySelectorAll('.nav-item.dropdown');
+        dropdowns.forEach(function (dropdown) {
+            dropdown.addEventListener('mouseenter', openDropdown);
+            dropdown.addEventListener('mouseleave', closeDropdown);
+        });
+    </script>
+
+
+    <script src="~/tema/assets/js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Owl Carousel'u başlat
+            $("#owl-demo1").owlCarousel({
+                loop: true, // Carousel döngüsü etkin
+                margin: 20, // Her öğe arasındaki kenar boşluğu
+                responsiveClass: true, // Duyarlı sınıfı etkinleştir
+                responsive: {
+                    // Ekran boyutlarına göre görüntülenen öğe sayısını ve navigasyon durumunu ayarla
+                    0: {
+                        items: 1, // 0 - 600 piksel aralığında, tek öğe göster
+                        nav: true // Navigasyon düğmelerini göster
+                    },
+                    600: {
+                        items: 1, // 600 - 1000 piksel aralığında, tek öğe göster
+                        nav: false // Navigasyon düğmelerini gizle
+                    },
+                    1000: {
+                        items: 1, // 1000 pikselden büyükse, tek öğe göster
+                        nav: true, // Navigasyon düğmelerini göster
+                        loop: true // Döngüyü etkinleştir
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <script src="~/tema/assets/js/bootstrap.min.js"></script>
+
+</body>
+</html>
