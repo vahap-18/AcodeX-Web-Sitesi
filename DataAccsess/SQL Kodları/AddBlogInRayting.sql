@@ -3,14 +3,10 @@ ON Blogs
 AFTER INSERT
 AS
 BEGIN
-    Declare @Id int
-    -- Inserted tablosunu geçici bir tabloya yönlendirin
-    DECLARE @Inserted TABLE (BlogId INT)
-    INSERT INTO @Inserted (BlogId)
-    SELECT BlogId FROM inserted
+    DECLARE @Id int
 
-    -- Geçici tablodan deðeri alýn
-    SELECT @Id = BlogId FROM @Inserted
+    -- Inserted tablosunu kullanarak BlogId deðerini alýn
+    SELECT @Id = BlogId FROM inserted
 
     -- BlogRaytings tablosuna veri ekleyin
     INSERT INTO BlogRaytings (BlogId, BlogTotalScore, BlogRaytingCount)

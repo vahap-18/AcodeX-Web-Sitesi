@@ -24,20 +24,7 @@ namespace AcodeX_Web_Sitesi.Controllers
         {
             return PartialView();
         }
-        public PartialViewResult WriterBlogsTables()
-        {
-            var values = wm.GetList();
-            return PartialView(values);
-        }
 
-        public PartialViewResult WritersEducationsTables()
-        {
-            return PartialView();
-        }
-        public PartialViewResult CategoriesTables()
-        {
-            var values = cm.GetList();
-            return PartialView(values);
-        }
+
     }
 }

@@ -93,7 +93,6 @@ namespace AcodeX_Web_Sitesi.Controllers
                 }
             }
 
-
             List<SelectListItem> values = (from x in cm.GetList()
                                            select new SelectListItem
                                            {

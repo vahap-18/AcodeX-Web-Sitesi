@@ -21,7 +21,7 @@
                                     <a asp-area="" asp-controller="AdminEducation" asp-action="EducationList">Eğitimler</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Eğitim Güncelleme
+                                    Eğitim Ekle
                                 </li>
                             </ol>
                         </nav>
@@ -49,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Title, "Eğitim Adı")
-                                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = Model.Title ?? "Belirsiz" })
+                                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = Model.Title != null ? Model.Title : "Belirsiz" })
                                     @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -72,7 +72,13 @@
                             </div>
                             <div class="form-group">
                                 @Html.LabelFor(m => m.CategoryId, "Kategori")
-                                @Html.TextBoxFor(m => m.CategoryId,  new { @class = "form-control", placeholder = "Kategori" })
+                                <select class="form-control" asp-for="CategoryId">
+                                    <option value="">-- Kategori Seç --</option>
+                                    @foreach (var category in ViewBag.Category)
+                                    {
+                                        <option value="@category.CategoryId">@category.Name</option>
+                                    }
+                                </select>
                                 @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -81,18 +87,6 @@
 
                     <h5>Eğitim Dosyaları</h5><br />
                     <section>
-
-@*                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    @Html.Label("Görsel Seç")
-                                    <div class="custom-file">
-                                        @Html.TextBoxFor(m => m.Image, new { type = "file", @class = "custom-file-input" })
-                                        <label class="custom-file-label">Görsel Seç</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> *@
                         <div class="col-md-12">
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Image, "Kapak Görsel")

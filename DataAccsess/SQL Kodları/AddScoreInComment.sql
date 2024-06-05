@@ -5,13 +5,8 @@ AS
 BEGIN
     DECLARE @Id int
     DECLARE @Score int
-    -- Inserted tablosunu geçici bir tabloya yönlendirin
-    DECLARE @Inserted TABLE (BlogId INT, BlogScore INT)
-    INSERT INTO @Inserted (BlogId, BlogScore)
-    SELECT BlogId, BlogScore FROM inserted
-
-    -- Geçici tablodan deðerleri alýn
-    SELECT @Id = BlogId, @Score = BlogScore FROM @Inserted
+    -- Inserted tablosunu kullanarak BlogId ve BlogScore deðerlerini alýn
+    SELECT @Id = BlogId, @Score = BlogScore FROM inserted
 
     -- BlogRaytings tablosunu güncelleyin
     UPDATE BlogRaytings 

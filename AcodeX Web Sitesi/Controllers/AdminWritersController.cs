@@ -46,11 +46,14 @@ namespace AcodeX_Web_Sitesi.Controllers
         }
 
         [HttpPost]
-        public IActionResult WriterUpdate(Writer w)
+        public IActionResult WriterUpdate(Writer updatedWriter)
         {
-            wm.TUpdate(w);
+            Writer existingWriter = wm.GetWriterById(updatedWriter.WriterId);
+            updatedWriter.Password = existingWriter.Password;
+            wm.TUpdate(updatedWriter);
             return RedirectToAction("WriterList", "AdminWriters");
         }
+
 
         public IActionResult WriterDelete(int id)
         {

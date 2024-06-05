@@ -15,16 +15,15 @@ namespace AcodeX_Web_Sitesi.Controllers
         CategoryManager cm = new CategoryManager(new EFCategoryRepository());
         WriterManager wm = new WriterManager(new EFWriterRepository());
         EducationManager em = new EducationManager(new EFEducationRespository());
-
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
         public IActionResult AnalysisPanel()
         {
             return View();
         }
         public IActionResult Calendar()
+        {
+            return View();
+        }
+        public IActionResult Dashboard()
         {
             return View();
         }
