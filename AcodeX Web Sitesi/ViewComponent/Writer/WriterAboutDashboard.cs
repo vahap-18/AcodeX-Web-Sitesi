@@ -7,9 +7,9 @@ namespace AcodeX_Web_Sitesi.ViewComponent.Writer
     public class WriterAboutDashboard : Microsoft.AspNetCore.Mvc.ViewComponent
     {
         WriterManager wm = new WriterManager(new EFWriterRepository());
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var writer = wm.GetListWriterById(1);
+            var writer = wm.GetListWriterById(id);
             return View(writer);
         }
     }

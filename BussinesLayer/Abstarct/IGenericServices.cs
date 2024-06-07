@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Concrate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,5 @@ namespace BussinesLayer.Abstarct
 		void TUpdate(T t);
 		List<T> GetList();
 		T TGetById(int id);
-	}
+    }
 }

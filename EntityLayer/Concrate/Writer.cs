@@ -34,6 +34,7 @@ namespace EntityLayer.Concrate
         public required string Password { get; set; }
         public required bool Status { get; set; }
         public  List<Blog>? Blogs { get; set; }
+        public DateTime CreateDate { get; set; }
 
     }
 }

@@ -26,6 +26,11 @@ namespace BussinesLayer.Concrate
             throw new NotImplementedException();
         }
 
+        public List<Notification> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TAdd(Notification t)
         {
             throw new NotImplementedException();

@@ -49,7 +49,7 @@ namespace BussinesLayer.Concrate
         }
         public Education GetEducationById(int id)
         {
-            return _educationDal.GetListAll(x=>x.EducationId == id).FirstOrDefault();
+            return _educationDal.GetListAll(x => x.EducationId == id).FirstOrDefault();
         }
 
         public Education TGetById(int id)

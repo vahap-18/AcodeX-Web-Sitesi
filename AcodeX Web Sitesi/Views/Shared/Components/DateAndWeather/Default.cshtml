@@ -1,0 +1,79 @@
+﻿<div class="row">
+    <div class="col-md-4 mb-15">
+        <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#000000">
+            <div class="d-flex justify-content-between pb-20 text-white">
+                <div class="icon h1 text-white">
+                    <i class="icon-copy bi bi-clock"></i>
+                </div>
+                <div class="font-16 text-right">
+                    <div> Saat</div>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="text-white">
+                    <div class="display-4">@DateTime.Now.ToString("hh:mm")</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-15">
+        <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#CD5C5C">
+            <div class="d-flex justify-content-between pb-20 text-white">
+                <div class="icon h1 text-white">
+                    <i class="icon-copy bi bi-calendar2-date"></i>
+                </div>
+                <div class="font-16 text-right">
+                    <div>Tarih</div>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="text-white">
+                    <div style="font-size:35px;">@DateTime.Now.ToString("dd MMM yyyy")</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-15">
+        <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#00CED1">
+            <div class="d-flex justify-content-between pb-20 text-white">
+                <div class="icon h1 text-white">
+                    <i class="icon-copy bi bi-cloud-sun"></i>
+                </div>
+                <div class="font-16 text-right">
+                    <div>Hava Durumu</div>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="text-white">
+                    <div class="font-24" id="weather"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Kullanıcının konumunu al
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        // Hava durumu API'sine istek gönder
+        var apiKey = '62097ae9f20b4247a39223036240606';
+        var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey + '&units=metric';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                var temperature = data.main.temp;
+                document.getElementById('weather').innerText = temperature + ' Derece';
+            })
+            .catch(error => console.error('Hava durumu alınamadı:', error));
+    });
+</script>

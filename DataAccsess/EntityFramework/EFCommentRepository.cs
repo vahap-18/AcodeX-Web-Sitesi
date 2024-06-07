@@ -53,6 +53,11 @@ namespace DataAccsess.EntityFramework
                 }
         }
 
+        public List<Blog> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(Comment t)
         {
            _commentDal.Insert(t);

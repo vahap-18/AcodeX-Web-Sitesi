@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AcodeX_Web_Sitesi.ViewComponent.AdminDashboard
+namespace AcodeX_Web_Sitesi.ViewComponent.StatisticAdminDashboard
 {
-    public class Static1 : Microsoft.AspNetCore.Mvc.ViewComponent
+    public class LastFiveEducator : Microsoft.AspNetCore.Mvc.ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -28,6 +28,7 @@ namespace DataAccsess.Concrate
         public DbSet<BlogRayting> BlogRaytings{ get; set; }
         public DbSet<Notification> Notifications{ get; set; }
         public DbSet<Education> Educations { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
     }
 }

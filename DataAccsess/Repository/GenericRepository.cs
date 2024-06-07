@@ -51,5 +51,9 @@ namespace DataAccsess.Repository
             c.SaveChanges();
         }
 
+        public List<Blog> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

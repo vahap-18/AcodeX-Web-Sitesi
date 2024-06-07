@@ -1,0 +1,75 @@
+﻿@*
+    Yönetim panelinde yazarın anasayfasında listelenecek blogların listesi.
+*@
+
+@using EntityLayer.Concrate
+@model List<Writer>
+
+<link href="~/admin/src/styles/style.css" rel="stylesheet" />
+
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Kullanıcı Listesi</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table nowrap equal-width-table">
+            <thead>
+                <tr>
+                    <th>Profil</th>
+                    <th>Id</th>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>E-mail</th>
+                    <th>Katılma Tarihi</th>
+                    <th>Durum</th>
+                    <th>Önizle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*
+                    GÖRSEL SONRADAN EKLENECEKTİR
+
+                    <td class="table-plus">
+                    <img src="~/admin/vendors/images/chat-img1.jpg"
+                    width="70"
+                    height="70"
+                    alt="" />
+                    </td>
+                    *@
+                        <td>@item.Image</td>
+                        <td class="table-plus">@item.WriterId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Email</td>
+                        <td>@(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))</td>
+                        <td>
+                            @if (item.Status)
+                            {
+                                <span class="text-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Pasif</span>
+                            }
+                        </td>
+
+                        <td>
+                            <a asp-controller="AdminWriters" asp-action="WritersProfilView/@item.WriterId">Profili Görüntüle</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

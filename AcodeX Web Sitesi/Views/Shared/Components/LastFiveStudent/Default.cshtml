@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrate
+@model List<Writer>
+
+@{
+    int siraNo = 1;
+}
+<div class="pd-20 card-box mb-30" data-bgcolor="#F9EFEF">
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h6">Kayıt olan son 5 öğrenci</h4>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Öğrenci Adı</th>
+                <th>Öğrenci Soyadı</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>Cansu</td>
+                <td>Yıldırım</td>
+                <td>cansu@gmail.com</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>Ahmet</td>
+                <td>Ufaklık</td>
+                <td>ufaklık@gmail.com</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>Ecrin</td>
+                <td>Kardelen</td>
+                <td>kardelenecrin@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

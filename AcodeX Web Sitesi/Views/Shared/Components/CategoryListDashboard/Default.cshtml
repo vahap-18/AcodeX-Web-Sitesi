@@ -6,7 +6,7 @@
 
 <div class="card-box mb-30">
     <div class="pd-20">
-        <h4 class="text-blue h4">Blog Kategorileri</h4>
+        <h4 class="text-blue h4">Kategori Listesi</h4>
     </div>
     <div class="table-responsive">
         <table class="table">
@@ -17,7 +17,6 @@
                     <th>Kategory Ad</th>
                     <th>Açıklama</th>
                     <th>Durum</th>
-                    <th>Blog</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,13 +26,15 @@
                         <td class="table-plus">@item.CategoryId</td>
                         <td>@item.Name</td>
                         <td>@item.Description</td>
-                        <td>@item.Status</td>
                         <td>
-                            <div class="progress mb-20">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                     aria-valuemin="0" aria-valuemax="100">
-                                </div>
-                            </div>
+                            @if (item.Status)
+                            {
+                                <span class="text-success">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">Pasif</span>
+                            }
                         </td>
                     </tr>
                 }

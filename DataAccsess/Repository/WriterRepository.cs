@@ -45,6 +45,12 @@ namespace DataAccsess.Repository
                 return context.Writers.Where(filter).ToList();
             }
         }
+
+        public List<Blog> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(Writer t)
         {
             using (var context = new Context())

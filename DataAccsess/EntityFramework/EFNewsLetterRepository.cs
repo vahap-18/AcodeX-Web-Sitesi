@@ -27,6 +27,11 @@ namespace DataAccsess.EntityFramework
             throw new NotImplementedException();
         }
 
+        public List<Blog> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Insert(NewsLetter entity)
         {
             using (var context = new Context())

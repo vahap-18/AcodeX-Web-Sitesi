@@ -17,17 +17,17 @@ namespace BussinesLayer.Concrate
         {
             _writerdal = writerdal;
         }
- 
+
 
         public List<Writer> GetList()
         {
-           return _writerdal.GetListAll();
+            return _writerdal.GetListAll();
         }
 
         public List<Writer> GetListWriterById(int id)
         {
 
-            return _writerdal.GetListAll(x => x.WriterId == id); 
+            return _writerdal.GetListAll(x => x.WriterId == id);
         }
 
         public Writer GetWriterById(int id)
@@ -43,12 +43,12 @@ namespace BussinesLayer.Concrate
 
         public void TDelete(Writer t)
         {
-            _writerdal.Delete(t);   
+            _writerdal.Delete(t);
         }
 
         public void TDelete(List<Writer> values)
         {
-            foreach(var writer in values)
+            foreach (var writer in values)
             {
                 _writerdal.Delete(writer);
             }

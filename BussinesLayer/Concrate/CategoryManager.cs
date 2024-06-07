@@ -9,7 +9,7 @@ namespace BussinesLayer.Concrate
     {
         ICategoryDal _categoryDal;
         private object value;
-		public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(ICategoryDal categoryDal)
         {
             _categoryDal = categoryDal;
         }
@@ -32,7 +32,7 @@ namespace BussinesLayer.Concrate
         }
         public void TAdd(Category t)
         {
-           _categoryDal.Insert(t);
+            _categoryDal.Insert(t);
         }
         public void TDelete(Category t)
         {

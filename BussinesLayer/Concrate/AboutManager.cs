@@ -42,6 +42,11 @@ namespace BussinesLayer.Concrate
 		{
 			_aboutDal.Update(t);
 		}
-	}
+
+        public List<About> GetListByMonth(int month, int year)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
     
