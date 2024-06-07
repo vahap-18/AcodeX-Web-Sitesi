@@ -6,12 +6,9 @@
     Layout = "_Layout";
 }
 
-
-<body>
     <div class="main-container">
         @foreach (var item in Model)
         {
-            <!-- Blog Görseli üst kısım  -->
             <div class="breatcumb-area d-flex align-items-center bread">
                 <div class="container">
                     <div class="row">
@@ -29,15 +26,11 @@
                 </div>
             </div>
 
-
-            <!-- //Blog Görseli üst kısım  -->
-
             <div class="blog_area blog-details-area rs pt-115 pb-90" id="blog">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                            <!-- Sayfa sol tarafı-->
                             <div class="col-md-12">
                                 <div class="dreamit-single-blog-box">
                                     <div class="img-container">
@@ -56,15 +49,11 @@
                             </div>
                         </div>
 
-                        <!--SAYFA SAĞ TARAF-->
                         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
-                            <!-- ETİKETLER-->
+
                             @await Component.InvokeAsync("CategoryList")
-                            <!-- //ETİKETLER-->
-                            <!-- Yazarın diğer blogları-->
                             @await Component.InvokeAsync("WriterLastBlog")
-                            <!-- //Yazarın diğer blogları-->
-                            <!--POPÜLER BLOGLAR-->
+
                             <div class="blog-left-side widget" style="margin-bottom: 10px;  border-bottom:1px groove gray">
                                 <div class="widget-sidebar-title text-left pb-20">
                                     <h6>POPÜLER BLOGLAR</h6>
@@ -82,8 +71,7 @@
                                     </div>
                                 </div> <br />
                             </div>
-                            <!-- //POPÜLER BLOGLAR-->
-                            <!--KATEGORİLER-->
+
                             <div class="widget-sidebar-box-two" style="margin-bottom: 10px; border-bottom:1px groove gray">
                                 <div class="widget-sidebar-title text-left pb-20">
                                     <h6>KATEGORİLER</h6>
@@ -100,8 +88,7 @@
                                     </ul>
                                 </div> <br />
                             </div>
-                            <!-- //KATEGORİLER-->
-                            <!-- ARŞİV-->
+
                             <div class="widget-sidebar-box-two" style="margin-bottom: 10px;  border-bottom:1px groove gray">
                                 <div class="widget-sidebar-title text-left pb-20">
                                     <h6>ARŞİV</h6>
@@ -114,25 +101,17 @@
                                     </ul>
                                 </div><br />
                             </div>
-                            <!-- //ARŞİV-->
-                            <!--ABONE OL-->
+                           @* 
                             @await Html.PartialAsync("../NewsLetter/SubscribeMail")
-                            <!--//ABONE OL-->
+                             *@
                         </div>
-
                     </div>
                 </div>
-
-
-                <!-- Yapılmış Yorumlar-->
                 @await Component.InvokeAsync("CommentListByBlog")
-
-                <!--Yapılacak yorumlar-->
                 @await Html.PartialAsync("../Comment/PartialAddComment")
             </div>
         }
     </div>
-    <!-- BLOG_AREA END-->
 
 
     <script>
@@ -147,15 +126,11 @@
                 document.getElementById("movetop").style.display = "none";
             }
         }
-
-        // When the user clicks on the button, scroll to the top of the document
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
     </script>
-    <!-- //move top -->
-    <!-- magnific popup -->
     <script src="assets/js/jquery.magnific-popup.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -192,10 +167,7 @@
             });
         });
     </script>
-    <!-- //magnific popup -->
-    <!-- common jquery plugin -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <!-- //common jquery plugin -->
     <!-- theme switch js (light and dark)-->
     <script src="assets/js/theme-change.js"></script>
     <script>
@@ -227,14 +199,10 @@
         }
 
         $(document).ready(function () {
-            // Now to start autoTyping just call the autoType function with the
-            // class of outer div
-            // The second paramter is the speed between each letter is typed.
             autoType(".type-js", 200);
         });
     </script>
     <!-- //theme switch js (light and dark)-->
-    <!-- magnific popup -->
     <script src="assets/js/jquery.magnific-popup.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -271,8 +239,6 @@
             });
         });
     </script>
-    <!-- //magnific popup -->
-    <!-- MENU-JS -->
     <script>
         $(window).on("scroll", function () {
             var scroll = $(window).scrollTop();
@@ -284,7 +250,6 @@
             }
         });
 
-        //Main navigation Active Class Add Remove
         $(".navbar-toggler").on("click", function () {
             $("header").toggleClass("active");
         });
@@ -299,8 +264,6 @@
             });
         });
     </script>
-    <!-- //MENU-JS -->
-    <!-- for testimonials carousel -->
     <script src="assets/js/owl.carousel.js"></script>
     <script>
         $(document).ready(function () {
@@ -326,8 +289,6 @@
             })
         })
     </script>
-    <!-- //for testimonials carousel -->
-    <!-- disable body scroll which navbar is in active -->
     <script>
         $(function () {
             $('.navbar-toggler').click(function () {
@@ -335,13 +296,5 @@
             })
         });
     </script>
-    <!-- //disable body scroll which navbar is in active -->
-    <!-- counter for stats -->
     <script src="assets/js/counter.js"></script>
-    <!-- //counter for stats -->
-    <!--bootstrap-->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- //bootstrap-->
-    <!-- //Js scripts -->
-
-</body>

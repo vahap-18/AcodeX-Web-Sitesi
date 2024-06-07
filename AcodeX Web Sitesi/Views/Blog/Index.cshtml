@@ -1,129 +1,107 @@
-﻿@*
-    Blog index sayfası
-*@
+﻿
 @using DataAccsess.Concrate
 @using EntityLayer.Concrate
 @model List<Blog>
 
 @{
     ViewData["Title"] = "Index";
-    //Layout = "../Shared/_Layout.cshtml";
+    Layout = "_Layout";
 }
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]AcodeX</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/AcodeX_Web_Sitesi.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link href="~/tema/assets/css/style-starter.css" rel="stylesheet" />
-</head>
 
-<body>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/AcodeX_Web_Sitesi.styles.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link href="~/tema/assets/css/style-starter.css" rel="stylesheet" />
 
-    <!-- Blog sayfa başlangıcı -->
-    <div class="main-container">
+<style>
+    .row-equal {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .row-equal > [class*='col-'] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row-equal .grids5-info {
+            flex: 1;
+        }
+
+</style>
+<div class="main-container">
     <div class="w3l-grids-block-5 py-5">
-            <div class="page-header">
-                <div class="col-md-6 col-sm-12">
-                    <div class="title">
-                        <h4>Blog Eğitim</h4>
-                    </div>
-                    <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a asp-area="" asp-controller="Home" asp-action="Index"> Anasayfa</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                Bloglar
-                            </li>
-                        </ol>
-                    </nav>
+        <div class="page-header">
+            <div class="col-md-6 col-sm-12">
+                <div class="title">
+                    <h4>Blog Eğitim</h4>
                 </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index"> Anasayfa</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Bloglar
+                        </li>
+                    </ol>
+                </nav>
             </div>
-            <div class="container">
-                <div class="row mt-sm-5 pt-lg-3">
-                    <!-- foreach döngüsünün başlangıcı-->
-                     @foreach (var item in Model)
-                                {
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="grids5-info">
-                                <a href="../Blog/BlogReadAll/@item.BlogId"><img src="~/tema/assets/images/blog2.jpg" alt="Blog Image" /></a>
-                                <div class="blog-info">
-                                    <div class="d-flex justify-content-between">
+        </div>
+        <div class="container">
+            <div class="row row-equal mt-sm-5 pt-lg-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="grids5-info">
+                            <a href="BlogReadAll/@item.BlogId"><img src="~/tema/assets/images/blog2.jpg" alt="Blog Image" /></a>
+                            <div class="blog-info">
+                                <div class="d-flex justify-content-between">
                                     <h5>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</h5>
-                                        <h5><i class="fa fa-comment"> 100</i></h5>
-                                        <h5><i class="fa fa-eye"> 250</i></h5>
-                                    </div>
-
-                                    <h5>
-                                        <i class="fa fa-category">
-                                            @using (var context = new Context())
-                                            {
-                                                var category = context.Categories.FirstOrDefault(w => w.CategoryId == @item.CategoryId);
-                                                if (category != null)
-                                                {
-                                                    <p> @category.Name</p>
-                                                }
-                                                else
-                                                {
-                                                    <p>Yazar bulunamadı</p>
-                                                }
-                                            }
-                                        </i>
-                                    </h5>
-                                    <h4><a href="../Blog/BlogReadAll/@item.BlogId" style="text-decoration:none">@item.Title</a></h4>
-                                    <p>
-                                        <!-- İf ile yapılan şartta Content içerisinde 200 karakter olup olmadığını kontrol eder ve eğer 200 karakter var ise açıklama olarak oraya yazar.-->
-                                        @if (!string.IsNullOrEmpty(item.Content) && item.Content.Length > 200)
-                                        {
-                                            @item.Content.Substring(0, item.Content.Substring(0, 200).LastIndexOf(" "))
-                                        }
-                                        else
-                                        {
-                                            @item.Content
-                                        }...
-                                    </p>
-                                    <a class="nav-link" href="Blog/BlogReadAll/@item.BlogId">
-                                        Blog devamı
-                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                    </a>
+                                    <h5><i class="fa fa-comment"> 100</i></h5>
+                                    <h5><i class="fa fa-eye"> 250</i></h5>
                                 </div>
-                        </div><br />
-                    </div> 
-                    }
-                  
-                    <!-- foreach döngüsünün bitişi-->
-                <!-- Sonraki Sayfaya geçiş -->
-                <div class="pagination-style">
-                    <ul>
-                        <li>
-                            <a href="#none" class="not-allowed" disabled="">
-                                <span class="fa fa-angle-double-left" aria-hidden="true"></span>
-                            </a>
-                        </li>
-                        <li><a class="active" href="#page">1</a></li>
-                        <li>
-                            <a href="#page">2</a>
-                        </li>
-                        <li>
-                            <a href="#page">3</a>
-                        </li>
-                        <li>
-                            <a href="#page">
-                                <span class="fa fa-angle-double-right" aria-hidden="true"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- //Sonraki Sayfaya geçiş -->
-                </div>
-            </div>
-    </div>
-    </div>
-    <!-- Blog sayfa bitiş -->
 
-</body>
-</html>
+                                <h5>
+                                    <i class="fa fa-category">
+                                        @using (var context = new Context())
+                                        {
+                                            var category = context.Categories.FirstOrDefault(w => w.CategoryId == @item.CategoryId);
+                                            if (category != null)
+                                            {
+                                                <p> @category.Name</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Yazar bulunamadı</p>
+                                            }
+                                        }
+                                    </i>
+                                </h5>
+                                <h4><a href="BlogReadAll/@item.BlogId" style="text-decoration:none" class="text-left">@item.Title</a></h4>
+                                <p class="text-left">
+                                    <!-- İf ile yapılan şartta Content içerisinde 150 karakter olup olmadığını kontrol eder ve eğer 150 karakter var ise açıklama olarak oraya yazar.-->
+                                    @if (!string.IsNullOrEmpty(item.Content) && item.Content.Length > 150)
+                                    {
+                                        @item.Content.Substring(0, item.Content.Substring(0, 150).LastIndexOf(" "))
+                                    }
+                                    else
+                                    {
+                                        @item.Content
+                                    }...
+                                </p>
+                                <a class="nav-link" href="BlogReadAll/@item.BlogId">
+                                    Blog devamı
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
 

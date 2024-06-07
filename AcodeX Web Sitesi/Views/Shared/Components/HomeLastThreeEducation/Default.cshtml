@@ -1,0 +1,45 @@
+﻿@using DataAccsess.Concrate
+@using EntityLayer.Concrate
+@model List<Education>
+
+<section class="w3l-servicesblock py-md-5 py-4">
+    <div class="features-bg pb-lg-5 pt-lg-4 py-4">
+        <div class="container">
+            <div class="title-main text-center mx-auto mb-md-4">
+                <h3 class="title-big">Video Eğitimler</h3>
+                <p class="sub-title mt-2">
+                    Video eğitimler ile öğrenmeye bir adım daha erken başlayın.
+                </p>
+            </div>
+            <div class="row">
+                @foreach (var education in Model)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="card" style="width: 100%;">
+                            <img class="card-img-top" src="~/tema/assets/images/c2.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-left">@education.Title</h5>
+                                @using (var context = new Context())
+                                {
+                                    var writer = context.Writers.FirstOrDefault(w => w.WriterId == education.WriterId);
+                                    if (writer != null)
+                                    {
+                                        <b> @writer.Name @writer.Surname</b>
+                                    }
+                                    else
+                                    {
+                                        <p>Yazar bulunamadı</p>
+                                    }
+                                }
+                                <p class="card-text text-left">@education.Description</p>
+                                <p class="card-text">@education.CreateDate.ToString("dd MMM yyyy")</p>
+                                <a href="~/Education/EducationDetails/@education.EducationId" class="btn btn-primary">Detaylar</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

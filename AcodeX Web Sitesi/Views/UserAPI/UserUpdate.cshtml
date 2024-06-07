@@ -1,0 +1,15 @@
+﻿@using AcodeX_Web_Sitesi.Controllers;
+@model Class1;
+@{
+    ViewData["Title"] = "UserUpdate";
+    Layout = "AdminLayout";
+    int siraNo = 1;
+}
+<div class="main-container">
+    <form method="post">
+        <label>Kullanıcı Adı : </label>
+        <input type="text" asp-for="@Model.Name" class="form-control" placeholder="@Model.Name" />
+        <br />
+        <button type="submit" class="btn btn-info">Güncelle</button>
+    </form>
+</div>

@@ -81,7 +81,7 @@ public class Program
     {
         // Controller ve Views'leri ekleyin
         services.AddControllersWithViews();
-
+        services.AddHttpClient();
 
         // Oturum yapýlandýrmasý
         services.AddSession(options =>

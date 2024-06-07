@@ -10,24 +10,27 @@ namespace AcodeX_Web_Sitesi.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-
         public IActionResult Index()
         {
             return View();
         }
 
-
         [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Index(Writer p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(p);
+            }
+
             Context c = new Context();
             var datavalue = c.Writers.FirstOrDefault(x => x.Email == p.Email && x.Password == p.Password);
             if (datavalue != null)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,p.Email),
+                    new Claim(ClaimTypes.Name, p.Email),
                 };
                 var userindentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userindentity);
@@ -36,7 +39,8 @@ namespace AcodeX_Web_Sitesi.Controllers
             }
             else
             {
-                return View(datavalue);
+                ModelState.AddModelError("", "Geçersiz e-posta veya parola");
+                return View(p);
             }
         }
 

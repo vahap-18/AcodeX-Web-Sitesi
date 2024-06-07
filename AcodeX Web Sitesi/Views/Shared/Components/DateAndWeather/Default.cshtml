@@ -50,7 +50,7 @@
             </div>
             <div class="d-flex justify-content-between align-items-end">
                 <div class="text-white">
-                    <div class="font-24" id="weather"></div>
+                    <div class="font-24" id="weather">Hava durum bilgisi alınıyor...</div>
                 </div>
 
             </div>
@@ -64,16 +64,31 @@
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
 
+        console.log("Latitude: ", latitude, "Longitude: ", longitude);
+
         // Hava durumu API'sine istek gönder
         var apiKey = '62097ae9f20b4247a39223036240606';
         var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey + '&units=metric';
 
+        console.log("API URL: ", apiUrl);
+
         fetch(apiUrl)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
             .then(data => {
                 var temperature = data.main.temp;
                 document.getElementById('weather').innerText = temperature + ' Derece';
             })
-            .catch(error => console.error('Hava durumu alınamadı:', error));
+            .catch(error => {
+                console.error('Hava durumu alınamadı:', error);
+                document.getElementById('weather').innerText = 'Hava durumu alınamadı.';
+            });
+    }, function (error) {
+        console.error('Geolocation error: ', error);
+        document.getElementById('weather').innerText = 'Konum alınamadı.';
     });
 </script>

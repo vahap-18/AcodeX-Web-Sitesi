@@ -38,7 +38,7 @@ Ana Navbar Layout parçası
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Artificial">
+                            <a class="dropdown-item" asp-area="" asp-controller="Artificial" asp-action="Index">
                                 <i class="bi bi-layout-wtf"></i> Yapay Zeka
                             </a>
                         </li>
@@ -50,15 +50,15 @@ Ana Navbar Layout parçası
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a class="dropdown-item" asp-area="" asp-controller="Dashboard" asp-action="Dashboard">
+                            <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="UserProfil">
                                 <i class="bi bi-person-lines-fill"></i> Hesabım
                             </a>
                         </li>
-                        <li>
-                            <a asp-area="" asp-controller="Writer" asp-action="WriterNotification" class="dropdown-toggle no-arrow">
+                        @* <li>
+                            <a asp-area="" asp-controller="#" asp-action="WriterNotification" class="dropdown-toggle no-arrow">
                                 <span class="mtext">Bildirimler</span>
                             </a>
-                        </li>
+                        </li> *@
                         <li><a asp-area="" asp-controller="Login" asp-action="ForgotPassword">Parolamı Unuttum</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action="ForgotPassword">Parola Sıfırla</a></li>
                         <li><a asp-area="" asp-controller="Login" asp-action="Index">Çıkış</a></li>

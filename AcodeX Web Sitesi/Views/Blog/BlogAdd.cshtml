@@ -1,6 +1,4 @@
 ﻿@model EntityLayer.Concrate.Blog;
-
-
 @{
     ViewData["Title"] = "BlogAdd";
     Layout = "WriterLayout";
@@ -32,13 +30,8 @@
 
 
             <div class="form-group">
-                @* Blog Başlığı için etiket oluştur *@
                 @Html.LabelFor(m => m.Title, "Blog Başlığı")
-
-                @* Blog Başlığı için metin kutusu oluştur ve Bootstrap sınıfı ekle *@
                 @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Blog Başlığı" })
-
-                @* Blog Başlığı için doğrulama mesajı alanı *@
                 @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
             </div>
 

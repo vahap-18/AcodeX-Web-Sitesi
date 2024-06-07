@@ -1,0 +1,225 @@
+﻿
+@model EntityLayer.Concrate.Writer
+
+@{
+    ViewData["Title"] = "UserProfilUpdate";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("UserProfilUpdate", "USer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="main-container">
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Profil Düzenleme</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a asp-area="" asp-controller="User" asp-action="UserProfil">Profilim</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Profil Düzenle
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <h4 class="text-blue h4">Profil Düzenleme</h4>
+                    <p class="mb-30">Kişi profil bilgilerini güncelleme</p>
+                </div>
+                <div class="wizard-content">
+                    <h5>Kişisel Bilgiler</h5><br />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.HiddenFor(m => m.WriterId)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Name, "İsim")
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Surname, "Soyisim")
+                                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                    @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.Label("Görsel Seç")
+                                    <div class="custom-file">
+                                        @Html.TextBoxFor(m => m.Image, new { type = "file", @class = "custom-file-input" })
+                                        <label class="custom-file-label">Görsel Seç</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, "Email")
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PhoneNumber, "Telefon Numarası")
+                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Sex, "Cinsiyet")
+                                    @Html.DropDownListFor(m => m.Sex, new List<SelectListItem>
+                                {
+                                new SelectListItem { Text = "Kadın", Value = "False" },
+                                new SelectListItem { Text = "Erkek", Value = "True" }
+                                }, "Cinsiyet Seçiniz", new { @class = "custom-select form-control" })
+                                    @Html.ValidationMessageFor(m => m.Sex, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Country, "Ülke")
+                                    @Html.DropDownListFor(m => m.Country, new List<SelectListItem>
+                                {
+                                new SelectListItem { Text = "Türkiye", Value = "Türkiye" },
+                                new SelectListItem { Text = "Belçika", Value = "Belçika" },
+                                new SelectListItem { Text = "Almanya", Value = "Almanya" },
+                                new SelectListItem { Text = "Polonya", Value = "Polonya" },
+                                new SelectListItem { Text = "İngiltere", Value = "İngiltere" },
+                                new SelectListItem { Text = "Azerbaycan", Value = "Azerbaycan" },
+                                new SelectListItem { Text = "İran", Value = "İran" },
+                                new SelectListItem { Text = "Amerika", Value = "Amerika" },
+                                new SelectListItem { Text = "İtalya", Value = "İtalya" },
+                                new SelectListItem { Text = "Brezilya", Value = "Brezilya" },
+                                new SelectListItem { Text = "Hindistan", Value = "Hindistan" }
+                                }, "Ülke Seçiniz", new { @class = "custom-select form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                    <h5>Mesleki Gelişim</h5><br />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FieldOfInterest, "Uzmanlık Alanı")
+                                    @Html.TextBoxFor(m => m.FieldOfInterest, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.KnowTeknologies, "Bilinen Teknolojiler")
+                                    @Html.TextBoxFor(m => m.KnowTeknologies, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ProgrammingLanguages, "Programlama Dilleri")
+                                    @Html.TextBoxFor(m => m.ProgrammingLanguages, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                    <h5>Sosyal Medya</h5><br />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.GitHub, "GitHub")
+                                    @Html.TextBoxFor(m => m.GitHub, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Instagram, "Instagram")
+                                    @Html.TextBoxFor(m => m.Instagram, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LinkedIn, "LinkedIn")
+                                    @Html.TextBoxFor(m => m.LinkedIn, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Facebook, "Facebook")
+                                    @Html.TextBoxFor(m => m.Facebook, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Website, "Web Site")
+                                    @Html.TextBoxFor(m => m.Website, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Youtube, "Youtube")
+                                    @Html.TextBoxFor(m => m.Youtube, new { @class = "form-control", placeholder = "Atanan bir değer yoktur" })
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                    <h5>Kullanıcı Girişi</h5><br />
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, "Email")
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Status, "Durum")
+                                    @Html.DropDownListFor(m => m.Status, new List<SelectListItem>
+                                {
+                                new SelectListItem { Text = "Aktif", Value = "True" },
+                                new SelectListItem { Text = "Pasif", Value = "False" }
+                                }, "Durum Seçiniz", new { @class = "custom-select form-control" })
+                                    @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>Parola : </label>
+                                        <input class="form-control form-control"
+                                               type="text"
+                                               value="Güvenlik nedeniyle parolanız bu sayfada değiştirilmemektedir."
+                                               readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <br />
+                    <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                    <a class="btn btn-info btn-block" asp-controller="User" asp-action="UserProfil">İptal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

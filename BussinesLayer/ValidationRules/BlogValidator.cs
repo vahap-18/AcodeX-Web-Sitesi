@@ -12,8 +12,6 @@ namespace BussinesLayer.ValidationRules
     {
         public BlogValidator()
         {
-            //Blog hakkındaki kuralların yer aldığı sayfadır
-
             RuleFor(x => x.Title).NotEmpty().WithMessage("Blog başlığını boş geçemezsiniz.");
             RuleFor(x => x.Description).NotEmpty().WithMessage("Blog açıklamasını boş geçemezsiniz.");
             RuleFor(x => x.Content).NotEmpty().WithMessage("Blog içeriğini boş geçemezsiniz.");

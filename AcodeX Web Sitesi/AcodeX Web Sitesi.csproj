@@ -468,18 +468,19 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="X.PagedList" Version="9.1.2" />
 		<PackageReference Include="X.PagedList.Mvc.Core" Version="9.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\APILayer\APILayer.csproj" />
 		<ProjectReference Include="..\BussinesLayer\BussinesLayer.csproj" />
 		<ProjectReference Include="..\DataAccsess\DataAccsess.csproj" />
 		<ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Views\Category\" />
 		<Folder Include="wwwroot\WriterImage\" />
 	</ItemGroup>
 
