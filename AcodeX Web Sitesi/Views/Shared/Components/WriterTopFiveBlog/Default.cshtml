@@ -1,0 +1,63 @@
+﻿@using DataAccsess.Concrate
+@using EntityLayer.Concrate
+@model List<Blog>
+
+@{
+    int siraNo = 1;
+}
+<div class="pd-20 card-box mb-30" data-bgcolor="#DEDEDE">
+    <div class="clearfix mb-20">
+        <div class="pull-left">
+            <h4 class="text-blue h6">Son 5 Blog</h4>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Blog Adı</th>
+                <th>Yazar Adı</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@siraNo</th>
+                    <td>@item.Title</td>
+                    <td>
+                        @using (var context = new Context())
+                        {
+                            var writer = context.Writers.FirstOrDefault(w => w.WriterId == item.WriterId);
+                            if (writer != null)
+                            {
+                                <p> @writer.Name</p>
+                            }
+                            else
+                            {
+                                <p>Yazar bulunamadı</p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @using (var context = new Context())
+                        {
+                            var category = context.Categories.FirstOrDefault(w => w.CategoryId == item.CategoryId);
+                            if (category != null)
+                            {
+                                <p> @category.Name</p>
+                            }
+                            else
+                            {
+                                <p>Kategori bulunamadı</p>
+                            }
+                        }
+                    </td>
+                </tr>
+                siraNo++;
+            }
+
+        </tbody>
+    </table>
+</div>

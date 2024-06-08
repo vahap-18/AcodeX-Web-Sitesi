@@ -1,0 +1,65 @@
+﻿@model UserRegisterViewModel;
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4">
+            <h1 class="mb-3 text-center">Yeni Hesap Oluştur</h1>
+
+            <form class="mb-3" asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="NameSurname">Ad Soyad</label>
+                    <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Ad Soyad" id="firstName" required />
+                    <span asp-validation-for="@Model.NameSurname" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UserName">Kullanıcı Adı</label>
+                    <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="@Model.UserName" id="lastName" required />
+                    <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email">Email:</label>
+                    <input type="email" class="form-control" placeholder="example@example.com" id="email" asp-for="@Model.Email" required />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Parola:</label>
+                    <input type="password" class="form-control" id="password" asp-for="@Model.Password" placeholder="*****" required />
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">Parola Tekrar:</label>
+                    <input type="password" class="form-control" id="password" asp-for="@Model.ConfirmPassword" placeholder="*****" required />
+                    <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-3">
+                    Hesap Oluştur
+                </button>
+
+                <div class="text-center">
+                    <em>Bir hesabınız varsa</em>
+                    <a asp-controller="LoginUser" asp-action="Login" class="btn btn-success btn-block">Giriş Yap</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>

@@ -1,6 +1,4 @@
-﻿@*
-    Yönetim panelinde Gösterge paneli sayfası (AnalysisPanel)
-*@
+﻿
 @{
     ViewData["Title"] = "AnalysisPanel";
     Layout = "AdminLayout";
@@ -10,14 +8,14 @@
 
     <div class="xs-pd-20-10 pd-ltr-20">
         @await Component.InvokeAsync("DateAndWeather")
-        @await Component.InvokeAsync("StaticticMonthBlogs")
-        @await Component.InvokeAsync("StatisticTotal")
+        @await Component.InvokeAsync("AdminStaticticMonthBlogs")
+        @await Component.InvokeAsync("AdminStatisticTotal")
     </div>
 
     <div class="xs-pd-20-10 pd-ltr-20">
         <div class="row">
             <div class="col-md-6">
-                @await Component.InvokeAsync("DashboardNotification")
+                @await Component.InvokeAsync("AdminDashboardNotification")
             </div>
             <div class="col-md-6">
                 @await Component.InvokeAsync("AdminDashboardMessage")
@@ -26,24 +24,24 @@
             <div class="xs-pd-20-10 pd-ltr-20">
                 <div class="row">
                     <div class="col-md-6">
-                        @await Component.InvokeAsync("LastFiveBlog")
+                        @await Component.InvokeAsync("AdminLastFiveBlog")
                     </div>
                     <div class="col-md-6">
-                        @await Component.InvokeAsync("LastFiveEducation")
+                        @await Component.InvokeAsync("AdminLastFiveEducation")
                     </div>
                     <div class="col-md-6">
-                        @await Component.InvokeAsync("LastFiveStudent")
+                        @await Component.InvokeAsync("AdminLastFiveStudent")
                     </div>
                     <div class="col-md-6">
-                        @await Component.InvokeAsync("LastFiveEducator")
+                        @await Component.InvokeAsync("AdminLastFiveEducator")
                     </div>
                 </div>
             </div>
 
         </div>
         <div class="xs-pd-20-10 pd-ltr-20">
-            @await Component.InvokeAsync("WonsBlog")
-            @await Component.InvokeAsync("WonsEducator")
+            @await Component.InvokeAsync("AdminWonsBlog")
+            @await Component.InvokeAsync("AdminWonsEducator")
         </div>
 
     </div>

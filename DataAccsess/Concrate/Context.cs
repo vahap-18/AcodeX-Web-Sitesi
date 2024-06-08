@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrate;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccsess.Concrate
 {
-    public class Context:DbContext
+    public class Context:IdentityDbContext<User, UserRole, int>
     {
        
         #region Bağlantı Cümlesi

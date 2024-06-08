@@ -1,0 +1,57 @@
+﻿@using DataAccsess.Concrate
+@using EntityLayer.Concrate
+@model List<Writer>
+
+@{
+    int siraNo = 1;
+}
+
+
+<div class="card-box mb-30">
+    <h2 class="h5 pd-20">Öğrenciler</h2>
+    <table class="data-table table nowrap">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="table-plus datatable-nosort">Profil</th>
+                <th>Adı</th>
+                <th>Soyadı</th>
+                <th>Kurs Puanı</th>
+                <th class="datatable-nosort">İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@siraNo</td>
+                    <td class="table-plus">
+                        <img src="~/admin/vendors/images/img.jpg"
+                             width="70"
+                             height="70"
+                             alt="" />
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>9/10</td>
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                               href="#"
+                               role="button"
+                               data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> Profili Görüntüle</a>
+                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Mesaj At</a>
+                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Çıkar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                siraNo++;   
+            }
+        </tbody>
+    </table>
+</div>

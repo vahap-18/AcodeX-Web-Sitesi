@@ -60,7 +60,7 @@ public class Program
         app.UseRouting();
 
         // Kimlik doðrulama için kullanýlan yapýlandýrma
-        //  app.UseAuthentication();
+      //  app.UseAuthentication();
 
         // Yetkilendirme için kullanýlan yapýlandýrma
         app.UseAuthorization();
@@ -79,6 +79,9 @@ public class Program
 
     private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<Context>();
+        services.AddIdentity<User, UserRole>().AddEntityFrameworkStores<Context>();
+
         // Controller ve Views'leri ekleyin
         services.AddControllersWithViews();
         services.AddHttpClient();
@@ -111,13 +114,10 @@ public class Program
         //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
         //.AddCookie(options =>
         //{
-        //    // Giriþ sayfasýnýn yolunu belirtin
-        //    options.LoginPath = "/Login/Index";
+        //    options.LoginPath = "/LoginUser/Login";
         //    options.Cookie.HttpOnly = true;
         //    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        //    // Oturum süresini sýfýra ayarlayýn
         //    options.ExpireTimeSpan = TimeSpan.Zero;
-        //    // Oturumun süresi, her istekte yenilensin
         //    options.SlidingExpiration = true;
         //});
     }

@@ -1,8 +1,10 @@
-﻿@*
-    Yönetim panelinde yazarın sahip olduğu blogların kategorilerinin listesi
-*@
+﻿
 @using EntityLayer.Concrate;
 @model List<Category>;
+
+@{
+    int siraNo = 1;
+}
 
 <div class="card-box mb-30">
     <div class="pd-20">
@@ -13,7 +15,7 @@
 
             <thead>
                 <tr>
-                    <th>Kategory Id</th>
+                    <th>#</th>
                     <th>Kategory Ad</th>
                     <th>Açıklama</th>
                     <th>Durum</th>
@@ -23,7 +25,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="table-plus">@item.CategoryId</td>
+                        <td class="table-plus">@siraNo</td>
                         <td>@item.Name</td>
                         <td>@item.Description</td>
                         <td>
@@ -37,6 +39,7 @@
                             }
                         </td>
                     </tr>
+                    siraNo++;
                 }
             </tbody>
         </table>

@@ -1,22 +1,22 @@
-﻿@*
-    Yönetim panelinde yazarın anasayfasında listelenecek blogların listesi.
-*@
-
+﻿@using DataAccsess.Concrate
 @using EntityLayer.Concrate
 @model List<Blog>
 
+@{
+    int siraNo = 1;
+}
 <link href="~/admin/src/styles/style.css" rel="stylesheet" />
 
 <div class="card-box mb-30">
     <div class="pd-20">
-        <h4 class="text-blue h4">Blog Listesi</h4>
+        <h4 class="text-blue h4">Blog Listesi (10 adet)</h4>
     </div>
     <div class="pb-20">
         <table class="data-table table nowrap equal-width-table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Görsel</th>
-                    <th>Blog Id</th>
                     <th>Blog Başlığı</th>
                     <th>Oluşturma Tarihi</th>
                     <th>Kategori</th>
@@ -28,23 +28,30 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Image</td>
-
-                        @*
-                    GÖRSEL SONRADAN EKLENECEKTİR
-
-                    <td class="table-plus">
-                    <img src="~/admin/vendors/images/chat-img1.jpg"
-                    width="70"
-                    height="70"
-                    alt="" />
-                    </td>
-                    *@
-                        <td class="table-plus">@item.BlogId</td>
+                        <td>@siraNo</td>
+                        <td class="table-plus">
+                            <img src="~/admin/vendors/images/img1.jpg"
+                                 width="70"
+                                 height="70"
+                                 alt="" />
+                        </td>
                         <td>@item.Title</td>
                         <td>@(((DateTime)item.CreateDate).ToString("dd MMM yyyy"))</td>
-                        <td>@item.Category.Name</td>
-                   
+                        <td>
+                            @using (var context = new Context())
+                            {
+                                var category = context.Categories.FirstOrDefault(w => w.CategoryId == item.CategoryId);
+                                if (category != null)
+                                {
+                                    <p> @category.Name</p>
+                                }
+                                else
+                                {
+                                    <p>Kategori bulunamadı</p>
+                                }
+                            }
+                        </td>
+
                         <td>
                             @if (item.Status)
                             {
@@ -60,6 +67,7 @@
                             <a href="/Blog/WriterBlogDetail/@item.BlogId" style="color:red"> Önizleme</a>
                         </td>
                     </tr>
+                    siraNo++;
                 }
             </tbody>
         </table>
