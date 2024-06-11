@@ -59,9 +59,8 @@ Ana Navbar Layout parçası
                                 <span class="mtext">Bildirimler</span>
                             </a>
                         </li> *@
-                        <li><a asp-area="" asp-controller="LoginUser" asp-action="ForgotPassword">Parolamı Unuttum</a></li>
-                        <li><a asp-area="" asp-controller="LoginUser" asp-action="ForgotPassword">Parola Sıfırla</a></li>
-                        <li><a asp-area="" asp-controller="LoginUser" asp-action="Login">Çıkış</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="ForgotPassword">Parolamı Unuttum</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış</a></li>
                     </ul>
                 </li>
 
@@ -81,7 +80,7 @@ Ana Navbar Layout parçası
                     </ul>
                 </li>
                 <li>
-                    <a class="dropdown-item" asp-area="" asp-controller="LoginUser" asp-action="Login">
+                    <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Login">
                         <i class="dw dw-logout"></i> Çıkış
                     </a>
                 </li>

@@ -3,6 +3,7 @@ using BussinesLayer.Concrate;
 using BussinesLayer.ValidationRules;
 using DataAccsess.EntityFramework;
 using EntityLayer.Concrate;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -21,6 +22,7 @@ public class EducationController : Controller
         _writerManager = writerManager;
     }
 
+    [AllowAnonymous]
     public IActionResult Index()
     {
         var education = _educationManager.GetList();
@@ -37,7 +39,7 @@ public class EducationController : Controller
         var writer = _writerManager.GetWriterById(id);
         return writer != null ? writer.Name : "Unknown";
     }
-
+    [AllowAnonymous]
     public IActionResult EducationDetails(int id)
     {
         var education = _educationManager.GetEducationById(id);

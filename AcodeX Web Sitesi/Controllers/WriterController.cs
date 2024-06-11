@@ -13,7 +13,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AcodeX_Web_Sitesi.Controllers
 {
-    [AllowAnonymous]
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EFWriterRepository());

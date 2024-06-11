@@ -72,10 +72,12 @@
 
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
                         @await Component.InvokeAsync("CategoryList")
-                        @await Html.PartialAsync("../NewsLetter/SubscribeMail")
                     </div>
                 </div>
             </div>
+
+            @await Html.PartialAsync("../NewsLetter/SubscribeMail")
         </div>
     }
+    @await Html.PartialAsync("../Comment/PartialAddComment")
 </div>

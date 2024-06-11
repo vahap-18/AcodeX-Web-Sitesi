@@ -3,23 +3,23 @@
 @model List<Blog>
 
 
-<div class="blog-left-side widget" style="margin-bottom: 10px;">
+<div class="blog-left-side widget">
     <div class="widget-sidebar-title text-left pb-20">
         <h6>YAZARIN DİĞER BLOGLARI</h6>
         <div class="em_bar_bg text-left1"></div>
-    </div> <br />
+    </div>
     @foreach (var item in Model)
     {
         <div class="categories-content">
             <ul>
                 <li>
                     <a href="~/Blog/BlogReadAll/@item.BlogId"><b>@item.Title</b> </a>
+
+                    <p style="color:dimgray"> @item.Description</p>
                     <em>
-                        <p style="color:dimgray"> @item.Description</p>
                         <span style="color:dimgray">@item.CreateDate.ToString("d MMMM yyyyy hh.mm")</span>
                     </em>
                 </li>
-                <br />
             </ul>
         </div>
     }

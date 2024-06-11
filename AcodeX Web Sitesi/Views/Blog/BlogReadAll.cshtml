@@ -6,295 +6,79 @@
     Layout = "_Layout";
 }
 
-    <div class="main-container">
-        @foreach (var item in Model)
-        {
-            <div class="breatcumb-area d-flex align-items-center bread">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="breatcumb-content text-center">
-                                <div class="breatcumb-title">
-                                    <h1>@item.Title</h1>
-                                </div> <br />
-                                <div class="breatcumb-content-text">
-                                    <span>@item.Description</span>
-                                </div>
+<div class="main-container">
+    @foreach (var item in Model)
+    {
+        <div class="breatcumb-area d-flex align-items-center bread">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breatcumb-content text-center">
+                            <div class="breatcumb-title">
+                                <h1>@item.Title</h1>
+                            </div> <br />
+                            <div class="breatcumb-content-text">
+                                <span>@item.Description</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="blog_area blog-details-area rs pt-115 pb-90" id="blog">
-                <div class="container">
-                    <div class="row">
+        <div class="blog_area blog-details-area rs pt-115 pb-90" id="blog">
+            <div class="container">
+                <div class="row">
 
-                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-                            <div class="col-md-12">
-                                <div class="dreamit-single-blog-box">
-                                    <div class="img-container">
-                                        <img src="~/tema/assets/images/blog3.jpg" style="max-height: 400px; width: 100%; object-fit: cover; margin-bottom: 50px;" />
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-12">
+                            <div class="dreamit-single-blog-box">
+                                <div class="img-container">
+                                    <img src="~/tema/assets/images/blog3.jpg" style="max-height: 400px; width: 100%; object-fit: cover; margin-bottom: 50px;" />
+                                </div>
+                                <div class="gen em-blog-content" style="margin-top: 70px;">
+                                    <div class="meta-blog">
+                                        <span>@item.CreateDate.ToString("d MMMM yyyy  hh.mm")</span>
                                     </div>
-                                    <div class="gen em-blog-content" style="margin-top: 70px;">
-                                        <div class="meta-blog">
-                                            <span>@item.CreateDate.ToString("d MMMM yyyy  hh.mm")</span>
-                                        </div>
-                                        <div class="meta-blog-right"><a href="#">0 Yorum</a></div>
-                                        <div class="blog-page-title pt-3">
-                                            <p>@item.Content</p>
-                                        </div>
+                                    <div class="meta-blog-right"><a href="#">0 Yorum</a></div>
+                                    <div class="blog-page-title pt-3">
+                                        <p>@item.Content</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
 
-                            @await Component.InvokeAsync("CategoryList")
-                            @await Component.InvokeAsync("WriterLastBlog")
+                        @await Component.InvokeAsync("CategoryList")
+                        @await Component.InvokeAsync("WriterLastBlog")
 
-                            <div class="blog-left-side widget" style="margin-bottom: 10px;  border-bottom:1px groove gray">
-                                <div class="widget-sidebar-title text-left pb-20">
-                                    <h6>POPÜLER BLOGLAR</h6>
-                                    <div class="em_bar_bg text-left1"></div>
-                                </div>
-                                <div class="popular-post-box">
-                                    <div class="popular-post-box-inner d-flex">
-                                        <div class="popular-post-thumb">
-                                            <a href="blog-details.html"><img src="~/Tema/assets/images/resource/c1.jpg" alt=""></a>
-                                        </div>
-                                        <div class="popular-post-content">
-                                            <a href="blog-details.html">Algorithm Tells Robots and Where Nearby</a>
-                                            <span>2021 December</span>
-                                        </div>
-                                    </div>
-                                </div> <br />
+                        <div class="widget-sidebar-box-two" style="margin-bottom: 10px; border-bottom:1px groove gray">
+                            <div class="widget-sidebar-title text-left pb-20">
+                                <h6>KATEGORİLER</h6>
+                                <div class="em_bar_bg text-left1"></div>
                             </div>
-
-                            <div class="widget-sidebar-box-two" style="margin-bottom: 10px; border-bottom:1px groove gray">
-                                <div class="widget-sidebar-title text-left pb-20">
-                                    <h6>KATEGORİLER</h6>
-                                    <div class="em_bar_bg text-left1"></div>
-                                </div>
-                                <div class="categories-content">
-                                    <ul>
-                                        <li><a href="blog-details.html">AI Tech</a></li>
-                                        <li><a href="blog-details.html">Cloud robotics</a></li>
-                                        <li><a href="blog-details.html">Data Science</a></li>
-                                        <li><a href="blog-details.html">IOT</a></li>
-                                        <li><a href="blog-details.html">Machine Learning</a></li>
-                                        <li><a href="blog-details.html">Technology</a></li>
-                                    </ul>
-                                </div> <br />
-                            </div>
-
-                            <div class="widget-sidebar-box-two" style="margin-bottom: 10px;  border-bottom:1px groove gray">
-                                <div class="widget-sidebar-title text-left pb-20">
-                                    <h6>ARŞİV</h6>
-                                    <div class="em_bar_bg text-left1"></div>
-                                </div>
-                                <div class="categories-content">
-                                    <ul>
-                                        <li><a href="blog-details.html">February 2021</a></li>
-                                        <li><a href="blog-details.html">January 2021</a></li>
-                                    </ul>
-                                </div><br />
-                            </div>
-                           @* 
-                            @await Html.PartialAsync("../NewsLetter/SubscribeMail")
-                             *@
+                            <div class="categories-content">
+                                <ul>
+                                    <li><a href="blog-details.html">AI Tech</a></li>
+                                    <li><a href="blog-details.html">Cloud robotics</a></li>
+                                    <li><a href="blog-details.html">Data Science</a></li>
+                                    <li><a href="blog-details.html">IOT</a></li>
+                                    <li><a href="blog-details.html">Machine Learning</a></li>
+                                    <li><a href="blog-details.html">Technology</a></li>
+                                </ul>
+                            </div> <br />
                         </div>
                     </div>
                 </div>
-                @await Component.InvokeAsync("CommentListByBlog")
-                @await Html.PartialAsync("../Comment/PartialAddComment")
+                <div class="col-md-12">
+                @await Html.PartialAsync("../NewsLetter/SubscribeMail")
+                </div>
             </div>
-        }
-    </div>
+            @await Component.InvokeAsync("CommentListByBlog")
 
-
-    <script>
-        window.onscroll = function () {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-            } else {
-                document.getElementById("movetop").style.display = "none";
-            }
-        }
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: 'auto',
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
-
-            $('.popup-with-move-anim').magnificPopup({
-                type: 'inline',
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: 'auto',
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-slide-bottom'
-            });
-        });
-    </script>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <!-- theme switch js (light and dark)-->
-    <script src="assets/js/theme-change.js"></script>
-    <script>
-        function autoType(elementClass, typingSpeed) {
-            var thhis = $(elementClass);
-            thhis.css({
-                "position": "relative",
-                "display": "inline-block"
-            });
-            thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
-            thhis = thhis.find(".text-js");
-            var text = thhis.text().trim().split('');
-            var amntOfChars = text.length;
-            var newString = "";
-            thhis.text("|");
-            setTimeout(function () {
-                thhis.css("opacity", 1);
-                thhis.prev().removeAttr("style");
-                thhis.text("");
-                for (var i = 0; i < amntOfChars; i++) {
-                    (function (i, char) {
-                        setTimeout(function () {
-                            newString += char;
-                            thhis.text(newString);
-                        }, i * typingSpeed);
-                    })(i + 1, text[i]);
-                }
-            }, 1500);
-        }
-
-        $(document).ready(function () {
-            autoType(".type-js", 200);
-        });
-    </script>
-    <!-- //theme switch js (light and dark)-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: 'auto',
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
-
-            $('.popup-with-move-anim').magnificPopup({
-                type: 'inline',
-
-                fixedContentPos: false,
-                fixedBgPos: true,
-
-                overflowY: 'auto',
-
-                closeBtnInside: true,
-                preloader: false,
-
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-slide-bottom'
-            });
-        });
-    </script>
-    <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
-            }
-        });
-
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
-            if ($(window).width() > 991) {
-                $("header").removeClass("active");
-            }
-            $(window).on("resize", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-            });
-        });
-    </script>
-    <script src="assets/js/owl.carousel.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#owl-demo1").owlCarousel({
-                loop: true,
-                margin: 20,
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: true
-                    },
-                    600: {
-                        items: 1,
-                        nav: false
-                    },
-                    1000: {
-                        items: 1,
-                        nav: true,
-                        loop: true
-                    }
-                }
-            })
-        })
-    </script>
-    <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
-    <script src="assets/js/counter.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+            @await Html.PartialAsync("../Comment/PartialAddComment")
+        </div>
+    }
+</div>

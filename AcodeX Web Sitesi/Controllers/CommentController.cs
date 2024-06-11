@@ -1,10 +1,12 @@
-﻿using BussinesLayer.Concrate;
+﻿ using BussinesLayer.Concrate;
 using DataAccsess.EntityFramework;
 using EntityLayer.Concrate;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcodeX_Web_Sitesi.Controllers
 {
+    [AllowAnonymous]
     public class CommentController : Controller
     {
 
@@ -15,10 +17,6 @@ namespace AcodeX_Web_Sitesi.Controllers
             this.cm = cm;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult PartialAddComment()
         {
@@ -32,12 +30,6 @@ namespace AcodeX_Web_Sitesi.Controllers
             p.BlogId = '2';
             cm.CommentAdd(p);
             return PartialView();
-        }
-
-        public IActionResult CommentListByBlog(int id)
-        {
-            var values = cm.GetList(id);
-            return PartialView(values);
         }
 
         public IActionResult GeriBildirimYazar()

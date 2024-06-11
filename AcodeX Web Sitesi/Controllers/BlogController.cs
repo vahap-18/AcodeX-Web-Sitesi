@@ -21,12 +21,13 @@ namespace AcodeX_Web_Sitesi.Controllers
             _blogManager = blogManager;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var values = _blogManager.GetBlogListWithCategory();
             return View(values);
         }
-
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             var blog = _blogManager.GetBlogById(id);

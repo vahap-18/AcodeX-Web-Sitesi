@@ -1,12 +1,8 @@
-﻿@*
-Yorum yapma kısmı 
-*@
-
-<br />
+﻿
 <div class="col-lg-12 content-form-right p-0">
     <div class="form-w3ls p-md-5 p-4">
         <h3 style="text-align:center">BİR YORUM BIRAK</h3> <br />
-        <form action="/Comment/PartialAddComment/" method="post">
+        <form method="post" asp-controller="Comment" asp-action="PartialAddComment">
             <div class="form-group">
                 <input class="form-control" type="text" name="UserName" id="w3lName"
                        placeholder="Kullanıcı adı" required="">

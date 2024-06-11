@@ -1,9 +1,10 @@
-﻿
-@model IEnumerable<EntityLayer.Concrate.Comment>
-@foreach(var item in Model)
+﻿@model IEnumerable<EntityLayer.Concrate.Comment>
+
+@foreach (var comment in Model)
 {
-    <p>@item.UserName</p>
+    <div class="comment">
+        <b>@comment.UserName</b>
+        <p>@comment.Content</p>
+        <p><small>@comment.UserName</small></p>
+    </div>
 }
-
-
-

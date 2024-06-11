@@ -10,34 +10,34 @@
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-2 offset-md-3 offset-lg-4">
             <h1 class="mb-3 text-center">Yeni Hesap Oluştur</h1>
 
-            <form class="mb-3" asp-action="Login">
+            <form class="mb-3" asp-action="Register">
                 <div class="form-group">
                     <label asp-for="NameSurname">Ad Soyad</label>
-                    <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Ad Soyad" id="firstName" required />
+                    <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Ad Soyad" id="firstName"/>
                     <span asp-validation-for="@Model.NameSurname" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="UserName">Kullanıcı Adı</label>
-                    <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="@Model.UserName" id="lastName" required />
+                    <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="@Model.UserName" id="lastName" />
                     <span asp-validation-for="@Model.UserName" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Email">Email:</label>
-                    <input type="email" class="form-control" placeholder="example@example.com" id="email" asp-for="@Model.Email" required />
+                    <input type="email" class="form-control" placeholder="example@example.com" id="email" asp-for="@Model.Email" />
                     <span asp-validation-for="@Model.Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Password">Parola:</label>
-                    <input type="password" class="form-control" id="password" asp-for="@Model.Password" placeholder="*****" required />
+                    <input type="password" class="form-control" id="password" asp-for="@Model.Password" placeholder="********" required />
                     <span asp-validation-for="@Model.Password" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="ConfirmPassword">Parola Tekrar:</label>
-                    <input type="password" class="form-control" id="password" asp-for="@Model.ConfirmPassword" placeholder="*****" required />
+                    <input type="password" class="form-control" id="password" asp-for="@Model.ConfirmPassword" placeholder="********" required />
                     <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
                 </div>
 
@@ -48,8 +48,8 @@
                 </button>
 
                 <div class="text-center">
-                    <em>Bir hesabınız varsa</em>
-                    <a asp-controller="LoginUser" asp-action="Login" class="btn btn-success btn-block">Giriş Yap</a>
+                    <span>Bir hesabınız varsa</span>
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-success btn-block">Giriş Yap</a>
                 </div>
             </form>
         </div>

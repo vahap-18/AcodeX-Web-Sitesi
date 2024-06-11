@@ -103,7 +103,7 @@
                             </div>
 
                             <div>
-                                <a href="UserProfilUpdate" type="button"
+                                <a href="UserProfilUpdate.cshtml" type="button"
                                    class="btn btn-success btn-lg btn-block">Profili Düzenle</a>
                             </div>
                             <div class="profile-skills">
@@ -553,9 +553,10 @@
                                                                 <label>Cinsiyet : </label>
                                                                 <input class="form-control form-control-lg"
                                                                        type="text"
-                                                                       value="@(item.Sex.ToString())"
+                                                                       value="@(item.Sex ? "Erkek" : "Kadın")"
                                                                        readonly />
                                                             </div>
+
 
 
                                                             <div class="form-group">
@@ -618,7 +619,7 @@
                                                                 <label>Durumum : </label>
                                                                 <input class="form-control form-control-lg"
                                                                        type="text"
-                                                                       value="@item.Status.ToString()"
+                                                                       value="@(item.Status ? "Aktif" : "Pasif")"
                                                                        readonly />
                                                             </div>
                                                         </li>
@@ -662,12 +663,12 @@
                                                             <div class="col-11">
                                                                 <div class="form-group">
                                                                     <label>Hakkımda : </label>
-                                                                    <input class="form-control form-control-lg"
-                                                                           type="text"
-                                                                           value="@item.About"
-                                                                           readonly />
+                                                                    <textarea class="form-control form-control-lg"
+                                                                              rows="4"
+                                                                              readonly>@item.About</textarea>
                                                                 </div>
                                                             </div>
+
                                                         </div>
 
                                                     </ul>

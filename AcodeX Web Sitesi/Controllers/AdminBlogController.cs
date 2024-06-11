@@ -1,6 +1,7 @@
 ﻿using BussinesLayer.Concrate;
 using BussinesLayer.ValidationRules;
 using DataAccsess.EntityFramework;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using EntityLayer.Concrate;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +11,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AcodeX_Web_Sitesi.Controllers
 {
-
     public class AdminBlogController : Controller
     {
         BlogManager bm = new BlogManager(new EFBlogRepository());
@@ -94,9 +94,10 @@ namespace AcodeX_Web_Sitesi.Controllers
             return RedirectToAction("BlogList");
         }
 
-        public IActionResult BlogDetail()
+        public IActionResult BlogDetail( int id)
         {
-            var values = bm.GetList();
+            var blog = _blogManager.GetBlogById(id);
+            var values = new List<Blog> { blog };
             return View(values);
         }
     }

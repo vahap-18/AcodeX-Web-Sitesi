@@ -10,7 +10,10 @@ using DataAccsess.Abstract;
 using EntityLayer.Concrate;
 using System.Resources;
 using DataAccsess.EntityFramework;
-   using Azure.ResourceManager.Storage;
+using Azure.ResourceManager.Storage;
+using AcodeX_Web_Sitesi.Models;
+using AcodeX_Web_Sitesi.Controllers;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -18,7 +21,8 @@ public class Program
         // Uygulama oluþturucuyu baþlat
         var builder = WebApplication.CreateBuilder(args);
 
-        //Dependency Injection kodlarý. IBlogDal içeirisinde tanýmlanan sýnýflar EFBlogRepository dosyasýnda somutlaþtýrýldý.
+        builder.Services.AddTransient<IEmailSender, EMailSenderManager>();
+
         builder.Services.AddScoped<IBlogDal, EFBlogRepository>();
         builder.Services.AddScoped<BlogManager, BlogManager>();
 
@@ -34,59 +38,50 @@ public class Program
         builder.Services.AddScoped<IWriterDal, EFWriterRepository>();
         builder.Services.AddScoped<WriterManager, WriterManager>();
 
-        // Hizmetleri yapýlandýr
+
         ConfigureServices(builder.Services, builder.Configuration);
 
-        // Uygulamayý oluþtur
         var app = builder.Build();
 
-        // Geliþtirme ortamýnda deðilse hata yöneticisini ve HSTS'yi kullan
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
 
-        // Durum kodu sayfalarýný kullanýcýya göster
         app.UseStatusCodePagesWithReExecute("/Error", "?code={0}");
-
-        // HTTPS'ye yönlendir
         app.UseHttpsRedirection();
-
-        // Statik dosyalarý sun
         app.UseStaticFiles();
-
-        // Routing'i etkinleþtir
         app.UseRouting();
 
         // Kimlik doðrulama için kullanýlan yapýlandýrma
-      //  app.UseAuthentication();
+        app.UseAuthentication();
 
-        // Yetkilendirme için kullanýlan yapýlandýrma
-        app.UseAuthorization();
-
-        // Oturum kullanýmý için yapýlandýrma
+        // app.UseAuthorization();
         app.UseSession();
-
-        // Controller rotalarýný eþleþtir
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Admin}/{action=Dashboard}/{id?}") ; 
-
-        // Uygulamayý çalýþtýr
+            pattern: "{controller=Admin}/{action=Dashboard}/{id?}");
         app.Run();
     }
 
     private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<Context>();
-        services.AddIdentity<User, UserRole>().AddEntityFrameworkStores<Context>();
+        services.AddIdentity<User, UserRole>(x =>
+        {
+            x.Password.RequireUppercase = true;
+            x.Password.RequireLowercase = true;
+            x.Password.RequireDigit = true;
+            x.Password.RequiredLength = 6;
 
-        // Controller ve Views'leri ekleyin
+            x.User.RequireUniqueEmail = true;
+        }).AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityErrorDescriber>();
+
         services.AddControllersWithViews();
         services.AddHttpClient();
 
-        // Oturum yapýlandýrmasý
+        //Oturum yapýlandýrmasý
         services.AddSession(options =>
         {
             options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -94,31 +89,25 @@ public class Program
             options.Cookie.IsEssential = true;
         });
 
-        // Daðýtýlmýþ bellek önbelleði ekle
         services.AddDistributedMemoryCache();
-
-        // IHttpContextAccessor için servis ekle
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-        //// MVC yapýlandýrmasý (isteðe baðlý kimlik doðrulama ve yetkilendirme)
-        //services.AddMvc(config =>
-        //{
-        //    // Yetkilendirme gereksinimi ekleyin
-        //    var policy = new AuthorizationPolicyBuilder()
-        //          .RequireAuthenticatedUser()
-        //          .Build();
-        //    config.Filters.Add(new AuthorizeFilter(policy));
-        //});
+        services.AddMvc(config =>
+        {
+            var policy = new AuthorizationPolicyBuilder()
+                  .RequireAuthenticatedUser()
+                  .Build();
+            config.Filters.Add(new AuthorizeFilter(policy));
 
-        //// Kimlik doðrulama için hizmet ekleme (isteðe baðlý)
-        //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-        //.AddCookie(options =>
-        //{
-        //    options.LoginPath = "/LoginUser/Login";
-        //    options.Cookie.HttpOnly = true;
-        //    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        //    options.ExpireTimeSpan = TimeSpan.Zero;
-        //    options.SlidingExpiration = true;
-        //});
+        });
+
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.Cookie.HttpOnly = true;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            options.ExpireTimeSpan = TimeSpan.Zero;
+            options.SlidingExpiration = true;
+        });
     }
 }

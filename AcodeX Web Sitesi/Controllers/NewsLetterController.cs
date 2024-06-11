@@ -2,12 +2,15 @@
 using EntityLayer.Concrate;
 using Microsoft.AspNetCore.Mvc;
 using DataAccsess.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AcodeX_Web_Sitesi.Controllers
 {
+    [AllowAnonymous]
     public class NewsLetterController : Controller
     {
         NewsLetterManager nm = new NewsLetterManager(new EFNewsLetterRepository());
+
         [HttpGet]
         public PartialViewResult SubscribeMail()
         {

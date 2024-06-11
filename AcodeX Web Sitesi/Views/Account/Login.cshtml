@@ -10,18 +10,19 @@
         <div class="row">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-sd-3 offset-lg-4">
                 <h1 class="mb-3 text-center">Giriş Yap</h1>
-                <form class="mb-3" method="post">
+                <form class="mb-3" method="post" asp-controller="Home" asp-action="Index">
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" asp-for="@Model.Email" placeholder="example@email.com" id="email" required />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="password">Parola:</label>
                         <input type="password" class="form-control" asp-for="@Model.Password" id="password" required />
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
                     </div>
 
                     <div class="text-danger" asp-validation-summary="ModelOnly">
-
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block">
@@ -30,9 +31,9 @@
                 </form>
                 <div class="text-center">
                     <p>Hesabınız varsa</p>
-                    <a asp-controller="RegisterUser" asp-action="Register" class="btn btn-success">Hesap Oluştur</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-success btn-block">Hesap Oluştur</a>
                     <p class="small">
-                        <a asp-controller="LoginUser" asp-action="ForgotPassword">Parolamı Unuttum</a>
+                        <a asp-controller="Account" asp-action="ResetPassword">Parolamı Unuttum</a>
                     </p>
                 </div>
             </div>
