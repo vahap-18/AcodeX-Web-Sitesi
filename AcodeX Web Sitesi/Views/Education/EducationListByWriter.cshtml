@@ -74,7 +74,7 @@
                             {
                                 <tr>
                                     <td class="table-plus">@sıraNo</td>
-                                    <td>@item.Image</td>
+                                    <td><img src="@item.Image" style="width:80px; height:50px" alt="Blog Image" /></td>
                                     <td>@item.Title</td>
                                     <td>@item.Description</td>
                                     <td>20 saat</td>
@@ -98,7 +98,7 @@
                                     <td>
                                         <a href="EducationDetails/@item.EducationId" style="margin:5px"><i class="dw dw-eye"></i></a>
                                     <a href="EducationEdit/@item.EducationId" style="margin:5px"><i class="dw dw-edit2"></i></a>
-                                        <a href="#" onclick="confirmDelete('@item.EducationId')"><i class="icon-copy bi bi-trash3"></i></a>
+                                        <a href="EducationDelete/@item.EducationId"><i class="icon-copy bi bi-trash3"></i></a>
                                     </td>
                                 </tr>
                                 sıraNo++;
@@ -106,27 +106,8 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    function confirmDelete(educationId) {
-        Swal.fire({
-            title: 'Silmek istediğinize emin misiniz?',
-            text: "Bu işlem geri alınamaz!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Evet, sil!',
-            cancelButtonText: 'İptal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = 'EducationDelete/' + educationId;
-            }
-        });
-    }
-</script>

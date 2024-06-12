@@ -25,8 +25,7 @@ namespace BussinesLayer.Concrate
         }
 
         public List<Writer> GetListWriterById(int id)
-        {
-
+        { 
             return _writerdal.GetListAll(x => x.WriterId == id);
         }
 

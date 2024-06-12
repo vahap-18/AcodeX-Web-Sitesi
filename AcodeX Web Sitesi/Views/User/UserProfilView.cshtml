@@ -51,7 +51,7 @@
 
                         <li class="weight-500 col-md-6">
 
-                            <img src="@item.Image" alt="Yazar Profil Görseli" style="max-height: 500px; width: 100%; object-fit:cover; margin-bottom: 50px;" />
+                            <img src="@item.Image" alt="Yazar Profil Görseli" style="max-height: 400px; width: 100%; object-fit: cover; margin-bottom: 50px;" />
                             <h4 class="text-blue h5 mb-20">
                                 Kişisel Bilgiler
                             </h4>
@@ -174,9 +174,11 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Hakkımda : </label>
-                                    <textarea class="form-control form-control-lg" readonly>@item.About</textarea>
+                                    <input class="form-control form-control-lg"
+                                           type="text"
+                                           value="@item.About"
+                                           readonly />
                                 </div>
-
                             </div>
                         </div>
 

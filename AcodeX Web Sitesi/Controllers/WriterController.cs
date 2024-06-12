@@ -34,10 +34,17 @@ namespace AcodeX_Web_Sitesi.Controllers
 
             return View();
         }
-        public IActionResult Profil()
+        public IActionResult Profil(int id)
         {
-            return View();
+            var writer = wm.GetListWriterById(1);
+            if (writer == null)
+            {
+                
+                return NotFound("Yazar bulunamadı.");
+            }
+            return View(writer);
         }
+
         public IActionResult Message()
         {
             return View();
@@ -58,13 +65,11 @@ namespace AcodeX_Web_Sitesi.Controllers
         {
             Context _context = new Context();
             var notifications = _context.Notifications.ToList();
-
-
             return View(notifications);
         }
 
         [HttpGet]
-        public IActionResult WriterProfilSettings()
+        public IActionResult WriterProfilSettings(int id)
         {
             var values = wm.TGetById(1);
             return View(values);
@@ -86,7 +91,6 @@ namespace AcodeX_Web_Sitesi.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                // Doğrulama başarısız olduğunda aynı sayfaya geri dön
                 return View(p);
             }
         }
@@ -131,10 +135,10 @@ namespace AcodeX_Web_Sitesi.Controllers
                 {
                     p.Image.CopyTo(stream);
                 }
-                w.Image = newImage; // Görsel yolunu doğru şekilde atıyoruz
+                w.Image = newImage;
             }
 
-            wm.TAdd(w); // Writer nesnesini ekliyoruz
+            wm.TAdd(w);
             return RedirectToAction("Profil", "Writer");
         }
 

@@ -55,7 +55,7 @@ public class EducationController : Controller
     public IActionResult EducationDelete(int id) { 
     var value = em.TGetById(id);
         em.TDelete(value);
-        return RedirectToAction("EducatiionListEriter");
+        return RedirectToAction("EducatiionListWriter");
     }
     [HttpGet]
     public ActionResult EducationEdit( int id)

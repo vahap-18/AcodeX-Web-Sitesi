@@ -78,3 +78,18 @@
         </div>
     </div>
 }
+
+<script>
+    document.getElementById('Image').addEventListener('change', function () {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var imgElement = document.getElementById('image-preview');
+                imgElement.src = e.target.result;
+                imgElement.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

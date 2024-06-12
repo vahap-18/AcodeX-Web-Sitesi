@@ -17,7 +17,7 @@ namespace AcodeX_Web_Sitesi.ViewComponent.Writer
 
         public IViewComponentResult Invoke()
         {
-            var  LastTenStudent = wm.GetList().Take(5).ToList();
+            var  LastTenStudent = wm.GetList().Take(10).ToList();
             return View(LastTenStudent);
         }
     }

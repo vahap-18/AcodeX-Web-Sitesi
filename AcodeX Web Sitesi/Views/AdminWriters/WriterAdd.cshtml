@@ -62,13 +62,12 @@
                     })
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
+           @*  <div class="form-group">
                 @Html.LabelFor(m => m.Sex, "Cinsiyet")
-                @Html.DropDownListFor(m => m.Sex, (SelectList)ViewBag.wm, new { @class = "form-control", placeholder = "Cinsiyet" })
+                @Html.DropDownListFor(m => m.Sex, (IEnumerable<SelectListItem>)ViewBag.Sex, "Seçiniz", new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Sex, "", new { @class = "text-danger" })
             </div>
-
+ *@
             <div class="form-group">
                 @Html.LabelFor(m => m.FieldOfInterest, "İlgi Alanları")
                 @Html.TextBoxFor(m => m.FieldOfInterest, new { @class = "form-control", placeholder = "İlgi Alanları" })
@@ -111,11 +110,11 @@
                 @Html.ValidationMessageFor(m => m.Adress, "", new { @class = "text-danger" })
             </div>
               
-            <div class="form-group">
+        @*     <div class="form-group">
                 @Html.LabelFor(m => m.Status, "Durum")
                 @Html.TextBoxFor(m => m.Status, new { @class = "form-control", rows = 6, placeholder = "Durum" })
                 @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
-            </div>
+            </div> *@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.About, "Hakkında")

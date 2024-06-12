@@ -24,6 +24,13 @@ namespace AcodeX_Web_Sitesi.Controllers
             return View(writer);
         }
 
+        public IActionResult UserProfilView(int id)
+        {
+            var writer = _writerManager.GetWriterById(id);
+            var values = new List<Writer> { writer };
+            return View(values);
+        }
+
         [HttpPost]
         public IActionResult UserProfilUpdate(Writer p)
         {

@@ -1,14 +1,8 @@
 ﻿@model EntityLayer.Concrate.Blog;
-
-@*
-    Blog düzenleme sayfası
-*@
 @{
     ViewData["Title"] = "EditBlog";
     Layout = "WriterLayout";
 }
-
-
 @using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="main-container">

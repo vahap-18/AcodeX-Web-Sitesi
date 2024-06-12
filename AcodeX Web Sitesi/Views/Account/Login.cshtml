@@ -1,4 +1,4 @@
-﻿@model UserLoginViewModel;
+﻿@model UserLoginViewModel
 @{
     Layout = null;
 }
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-sd-3 offset-lg-4">
                 <h1 class="mb-3 text-center">Giriş Yap</h1>
-                <form class="mb-3" method="post" asp-controller="Home" asp-action="Index">
+                <form class="mb-3" method="post" asp-controller="Account" asp-action="Login">
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" asp-for="@Model.Email" placeholder="example@email.com" id="email" required />
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="password">Parola:</label>
                         <input type="password" class="form-control" asp-for="@Model.Password" id="password" required />
-                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                        <span asp-validation-for="@Model.Password" class="text-danger"></span>
                     </div>
 
                     <div class="text-danger" asp-validation-summary="ModelOnly">

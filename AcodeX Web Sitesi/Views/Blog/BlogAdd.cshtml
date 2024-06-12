@@ -43,22 +43,21 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.CategoryId, "Kategori")
-                @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control", placeholder = "Kategori" })
+                @Html.TextBoxFor(m => m.CategoryId, new { @class = "form-control", placeholder = "Kategori" })
                 @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
             </div>
 
-
-            <div class="form-group">
+           @*  <div class="form-group">
                 @Html.LabelFor(m => m.Image, "Blog Görseli")
                 @Html.TextBoxFor(m => m.Image, new { @class = "form-control", placeholder = "Blog Görseli" })
                 @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
-            </div>
+            </div> *@
 
-            @*   <div class="form-group">
-        @Html.LabelFor(m => m.Image, "Blog Görseli")
-        <input type="file" name="Image" class="form-control-file form-control height-auto" />
-        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
-        </div> *@
+            <div class="form-group">
+                @Html.LabelFor(m => m.Image, "Blog Görseli")
+                <input type="file" name="Image" class="form-control-file form-control height-auto" />
+                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Content, "Blog İçeriği")
@@ -66,8 +65,22 @@
                 @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
             </div>
 
-            @* Blog Ekle butonu *@
             <button type="submit" class="btn btn-primary btn-lg btn-block">Blog Ekle</button>
         </div>
     }
 </div>
+
+<script>
+    document.getElementById('Image').addEventListener('change', function () {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var imgElement = document.getElementById('image-preview');
+                imgElement.src = e.target.result;
+                imgElement.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

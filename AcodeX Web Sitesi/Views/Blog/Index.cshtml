@@ -1,5 +1,4 @@
-﻿
-@using DataAccsess.Concrate
+﻿@using DataAccsess.Concrate
 @using EntityLayer.Concrate
 @model List<Blog>
 
@@ -54,7 +53,9 @@
                 {
                     <div class="col-lg-4 col-sm-6">
                         <div class="grids5-info">
-                            <a href="BlogReadAll/@item.BlogId"><img src="~/tema/assets/images/blog2.jpg" alt="Blog Image" /></a>
+                            <a href="BlogReadAll/@item.BlogId">
+                                <img src="@item.Image" alt="Blog Image" style="width:315px; height:210px"/>
+                            </a>
                             <div class="blog-info">
                                 <div class="d-flex justify-content-between">
                                     <h5>@(((DateTime)item.CreateDate).ToString("dd-MMM-yyyy"))</h5>

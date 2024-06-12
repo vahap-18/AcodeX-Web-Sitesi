@@ -1,34 +1,7 @@
-﻿@* Son 3 blog *@
-
+﻿
 @using EntityLayer.Concrate
 @model List<Blog>
 
-@* <div class="tech-btm">
-    <h3>Son Postlar</h3>
-    <div class="blog-grids row mb-3">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-5 blog-grid-left">
-                <a href="/Blog/BlogReadAll/@item.BlogId">
-                    <img src="~/Tema/assets/images/@item.Image" class="card-img-top img-fluid" alt="Blog görseli" />
-                </a>
-            </div>
-            <div class="col-md-7 blog-grid-right">
-                <h5>
-                    <a href="/Blog/BlogReadAll/@item.BlogId">@item.Title</a>
-                </h5>
-                <div class="sub-meta">
-                    <span>
-                        <i class="fa fa-clock"></i> @item.CreateDate.ToString("dd MMMM yyyy mm.hh")
-                    </span>
-                </div>
-            </div>
-        }
-    </div>
-</div> *@
-
-
-<!-- Blog sayfa başlangıcı -->
 <div class="w3l-grids-block-5 py-5">
     <section id="grids5-block" class="pt-md-4 pb-md-5 py-4 mb-5">
         <div class="container">
@@ -43,7 +16,7 @@
                 {
                     <div class="col-lg-4 col-sm-6  mt-lg-0 mt-4">
                         <div class=" grids5-info">
-                            <a href="/Blog/BlogReadAll/@item.BlogId"><img src="~/Tema/assets/images/blog3.jpg" alt="Blog Görseli" /></a>
+                            <a href="/Blog/BlogReadAll/@item.BlogId"><img src="@item.Image" alt="Blog Görseli" /></a>
                             <div class="blog-info">
                                 <h5>@item.CreateDate.ToString("dd MMMM yyyy mm.hh")</h5>
                                 <h4>

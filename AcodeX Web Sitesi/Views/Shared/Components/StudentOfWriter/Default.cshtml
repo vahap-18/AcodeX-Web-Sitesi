@@ -26,10 +26,7 @@
                 <tr>
                     <td>@siraNo</td>
                     <td class="table-plus">
-                        <img src="~/admin/vendors/images/img.jpg"
-                             width="70"
-                             height="70"
-                             alt="" />
+                        <img src="@item.Image" style="width:50px;height:60px"/>
                     </td>
                     <td>@item.Name</td>
                     <td>@item.Surname</td>
@@ -43,7 +40,7 @@
                                 <i class="dw dw-more"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> Profili Görüntüle</a>
+                                <a class="dropdown-item" asp-controller="User" asp-action="UserProfilView" asp-route-id="@item.WriterId"><i class="dw dw-eye"></i> Profili Görüntüle</a>
                                 <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Mesaj At</a>
                                 <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Çıkar</a>
                             </div>

@@ -55,7 +55,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Description, "Kısa Açıklama")
-                                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @placeholder = Model.Description ?? "Belirsiz" })
+                                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control"})
+
                                     @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
                                 </div>
                             </div>

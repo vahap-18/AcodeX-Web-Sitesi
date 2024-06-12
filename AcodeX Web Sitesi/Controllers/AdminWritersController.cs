@@ -1,4 +1,5 @@
-﻿using BussinesLayer.Concrate;
+﻿using AcodeX_Web_Sitesi.Models;
+using BussinesLayer.Concrate;
 using BussinesLayer.ValidationRules;
 using DataAccsess.Abstract;
 using DataAccsess.EntityFramework;
@@ -31,6 +32,12 @@ namespace AcodeX_Web_Sitesi.Controllers
             var values = wm.GetList().ToPagedList(wp, 10);
             return View(values);
         }
+
+        public IActionResult WriterAboutDashboard(int id)
+        {
+            var writer = wm.GetListWriterById(1);
+            return View(writer);
+        }
         [HttpGet]
         public IActionResult WriterUpdate(int id)
         {
@@ -50,6 +57,10 @@ namespace AcodeX_Web_Sitesi.Controllers
         {
             Writer existingWriter = wm.GetWriterById(updatedWriter.WriterId);
             updatedWriter.Password = existingWriter.Password;
+            updatedWriter.Image = existingWriter.Image;
+            updatedWriter.About = existingWriter.About;
+            updatedWriter.Adress = existingWriter.Adress;
+            updatedWriter.Tweeter = existingWriter.Tweeter;
             wm.TUpdate(updatedWriter);
             return RedirectToAction("WriterList", "AdminWriters");
         }
@@ -66,15 +77,16 @@ namespace AcodeX_Web_Sitesi.Controllers
         public IActionResult WriterAdd(int id)
         {
             List<SelectListItem> genderValues = new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Erkek", Value = "1" },
-                    new SelectListItem { Text = "Kadın", Value = "0" },
-                };
+    {
+        new SelectListItem { Text = "Erkek", Value = "1" },
+        new SelectListItem { Text = "Kadın", Value = "0" },
+    };
 
-            ViewBag.wm = new SelectList(genderValues, "Value", "Text");
+            ViewBag.Sex = genderValues;
 
             return View();
         }
+
 
 
         [HttpPost]
@@ -97,8 +109,5 @@ namespace AcodeX_Web_Sitesi.Controllers
             }
             return View();
         }
-
-
     }
-
 }

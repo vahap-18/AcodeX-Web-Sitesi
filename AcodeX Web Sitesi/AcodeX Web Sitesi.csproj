@@ -32,6 +32,7 @@
 
 	<ItemGroup>
 		<Content Remove="wwwroot\Tema\BlogTema\Blogındex.html" />
+		<Content Remove="wwwroot\WriterImage\4f1b4679-c2ef-45d0-b122-628afcea7941.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

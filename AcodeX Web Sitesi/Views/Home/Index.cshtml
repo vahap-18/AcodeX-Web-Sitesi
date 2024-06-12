@@ -4,21 +4,33 @@
 }
 
 
-<div class="main-container">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap" rel="stylesheet">
+    <style>
+        .spicy-rice-regular {
+            font-family: "Spicy Rice", serif;
+            font-weight: 800;
+            font-style: normal;
+            text-align: center;
+            color: darkslategray;
+        }
 
+    </style>
+</head>
+<div class="main-container">
+    <section class="w3l-servicesblock py-md-5 py-4" style="background-color:antiquewhite">
+        <div class="features-bg pb-lg-5 pt-lg-4 py-4">
+            <div class="container">
+                    <h1 class="spicy-rice-regular display-4">AcodeX Academy</h1>
+            </div>
+        </div>
+    </section>
     @await Component.InvokeAsync("HomeLastThreeEducation")
     @await Component.InvokeAsync("HomeIndexLastThreeBlog")
     @await Component.InvokeAsync("HomeIndexArtificial")
 </div>
-  @* 
-    <!-- Anasayfa blog partialı-->
-    @await Html.PartialAsync("PartialBlog")
-
-    @*
-    @await Component.InvokeAsync("BlogLastTreePost")
-  
-    <!-- Yapay zeka partialı-->
-    @await Html.PartialAsync("PartialArticial") *@
 
 
 

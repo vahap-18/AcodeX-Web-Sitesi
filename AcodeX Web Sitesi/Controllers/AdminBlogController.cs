@@ -41,14 +41,25 @@ namespace AcodeX_Web_Sitesi.Controllers
         }
 
         [HttpPost]
-        public IActionResult BlogAdd(Blog p)
+        public IActionResult BlogAdd(Blog p, IFormFile Image)
         {
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(p);
             if (results.IsValid)
             {
+                if (Image != null && Image.Length > 0)
+                {
+                    var fileName = Path.GetFileName(Image.FileName);
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImage", fileName);
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        Image.CopyTo(stream);
+                    }
+                    p.Image = "/WriterImage/" + fileName;
+                }
+
                 p.Status = true;
-                p.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                p.CreateDate = DateTime.Now;
                 p.WriterId = 1;
                 bm.TAdd(p);
                 return RedirectToAction("BlogList", "AdminBlog");
@@ -60,8 +71,17 @@ namespace AcodeX_Web_Sitesi.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
+
+            List<SelectListItem> CategoryValues = (from x in cm.GetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = CategoryValues;
             return View();
         }
+
 
         public IActionResult BlogDelete(int id)
         {
@@ -94,7 +114,7 @@ namespace AcodeX_Web_Sitesi.Controllers
             return RedirectToAction("BlogList");
         }
 
-        public IActionResult BlogDetail( int id)
+        public IActionResult BlogDetail(int id)
         {
             var blog = _blogManager.GetBlogById(id);
             var values = new List<Blog> { blog };

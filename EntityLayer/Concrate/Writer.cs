@@ -13,32 +13,32 @@ namespace EntityLayer.Concrate
         [Key]
         public int WriterId { get; set; }
         public required string Name { get; set; }
-        public string? Surname{ get; set; }
+        public string? Surname { get; set; }
 
         [Required(ErrorMessage = "E-mail gereklidir.")]
         [EmailAddress(ErrorMessage = "Geçerli bir e-mail adresi giriniz.")]
         public required string Email { get; set; }
-        public string? FieldOfInterest { get; set; } 
+        public string? FieldOfInterest { get; set; }
         public bool Sex { get; set; }
-        public string? About { get; set; } 
-        public string? Image { get; set; } 
-        public string? Country { get; set; } 
-        public string? Adress { get; set; } 
-        public string? PhoneNumber { get; set; } 
-        public string? GitHub { get; set; } 
-        public string? Instagram { get; set; } 
-        public string? Facebook { get; set; } 
-        public string? Youtube { get; set; } 
-        public string? LinkedIn { get; set; } 
-        public string? Tweeter { get; set; } 
-        public string? Website { get; set; }    
-        public string? KnowTeknologies { get; set; } 
+        public string? About { get; set; }
+        public string? Image { get; set; }
+        public string? Country { get; set; }
+        public string? Adress { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? GitHub { get; set; }
+        public string? Instagram { get; set; }
+        public string? Facebook { get; set; }
+        public string? Youtube { get; set; }
+        public string? LinkedIn { get; set; }
+        public string? Tweeter { get; set; }
+        public string? Website { get; set; }
+        public string? KnowTeknologies { get; set; }
         public string? ProgrammingLanguages { get; set; }
 
         [Required(ErrorMessage = "Parola gereklidir.")]
         public required string Password { get; set; }
         public required bool Status { get; set; }
-        public  List<Blog>? Blogs { get; set; }
+        public List<Blog>? Blogs { get; set; }
         public DateTime CreateDate { get; set; }
 
     }

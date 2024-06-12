@@ -30,26 +30,34 @@ namespace AcodeX_Web_Sitesi.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginViewModel p)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(p.Email, p.Password, true, false);
-                if (result.Succeeded)
+                var user = await _userManager.FindByEmailAsync(p.Email);
+                if (user != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var result = await _signInManager.PasswordSignInAsync(user, p.Password, true, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Hatalı parola.");
+                        return View();
+                    }
                 }
-                
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Giriş denemesi başarısız.");
+                    ModelState.AddModelError(string.Empty, "Sisteme kayıtlı olmayan e-posta adresi.");
                     return View();
                 }
             }
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)

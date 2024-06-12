@@ -19,7 +19,6 @@ namespace AcodeX_Web_Sitesi.Controllers
 
 		public IActionResult AnalysisPanel()
 		{
-
 			return View();
 		}
 
