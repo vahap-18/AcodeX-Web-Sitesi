@@ -1,2 +1,2 @@
 
-**Readme sayfa içeriği AcodexWebSitesiRapor.jpynb[AcodexWebSitesiRapor.jpynb] içerisinde buluyor**
+**Readme sayfa içeriği AcodexWebSitesiRapor.jpynb içerisinde buluyor**
